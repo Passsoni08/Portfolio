@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portifólio Rafael V Passoni</title>
+
+    <!--Normalize CSS - Padronizar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Icons-->
+    <link rel="stylesheet" type="text/css" href="assets/icons/">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+
+    <!--CSS:-->
+    <!--Global CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/global.css">
+    <!--Header CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/header.css">
+    <!--Acordeon CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/acordeon.css">
+    <!--Languages CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/languages.css">
+    <!--Portfolio CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/portfolio.css">
+    <!--Experience CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/experience.css">
+    <!--Skills CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/skills.css">
+
+
+</head>
+
+<body>
+
+    <!--Main Start-->
+    <main class="main">
+        <header class="header">
+            <img src="assets/img/my-photo.jpeg" alt="Foto de Perfil" class="photo" id=profile.photo>
+
+            <h1 class="title">
+                Hello, <br>I am <span id="profile.name">Carregando...</span>
+            </h1>
+
+            <div class="information">
+                <p class="job" id="profile.job">Carregando...</p>
+                <p class="phone">
+                    <a href="tel:+55 (16) 99211-7053" id="profile.phone">Carregando...</a>
+                </p>
+                <p class="email">
+                    <a href="mailto:passonirafael08@gmail.com" id="profile.email">Carregando...</a>
+                </p>
+                <p class="location" id="profile.location">Carregando...</p>
+            </div>
+
+        </header>
+
+        <!--Skills Section-->
+        <section class="acordeon">
+            <button class="trigger" type="button">
+                <h2>Skills</h2>
+            </button>
+
+            <!--Content-->
+            <div class="content">
+                <div class="skills">
+                    <section class="tools">
+                        <!--Hard Skills-->
+                        <h3>Hard Skills</h3>
+                        <ul id="profile.skills.hardSkills"></ul>
+                    </section>
+
+                    <!--Soft Skills-->
+                    <section class="personal">
+                        <h3>Soft Skills</h3>
+                        <ul id="profile.skills.softSkills">
+                            <li>Teamwork</li>
+                            <li>Lidership</li>
+                            <li>Fast Learner</li>
+                            <li>Adaptability</li>
+                            <li>Communication</li>
+                        </ul>
+                    </section>
+                </div>
+
+            </div>
+
+        </section><!--Skills Section-->
+
+        <!--Projects Section-->
+        <section class="acordeon">
+            <button class="trigger" type="button">
+                <h2>Projects</h2>
+            </button>
+
+            <div class="content"><!--Content-->
+                <ul class="portfolio">
+                    <li>
+                        <span class="title github">API Pokedex</span>
+                        <a href="https://github.com/Passsoni08/Pokedex"
+                            target="_blank">https://github.com/Passsoni08/Pokedex</a>
+                    </li>
+
+                    <li>
+                        <span class="title github">Spotify</span>
+                        <a href="https://github.com/Passsoni08/CloneSpotify"
+                            target="_blank">https://github.com/Passsoni08/CloneSpotify</a>
+                    </li>
+
+                    <li>
+                        <span class="title github">Mosquito Killer</span>
+                        <a href="https://github.com/Passsoni08/MataMosquito"
+                            target="_blank">https://github.com/Passsoni08/MataMosquito</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </section><!--Projects Section-->
+
+        <!--Languages Section-->
+        <section class="acordeon">
+            <button class="trigger" type="button">
+                <h2>Languages</h2>
+            </button>
+
+            <!--Content-->
+            <div class="content">
+                <ul class="languages" id="profile.languages"></ul>
+            </div>
+
+        </section><!--Languages Section-->
+
+        <!--Experience Section-->
+        <section class="acordeon">
+            <button class="trigger" type="button">
+                <h2>Experiences</h2>
+            </button>
+
+            <div class="content"><!--Content-->
+                <ul class="experience">
+                    <li>
+                        <span class="title">Centro Universitário IBMR</span>
+                        <span class="period">August/2023 - Current</span>
+                        <p>Pursuing a degree in Systems Analysis and Development</p>
+                    </li>
+
+                    <li>
+                        <span class="title">JavaScript Developer at DIO</span>
+                        <span class="period">March/2025 - May/2025</span>
+                        <p>
+                            I've learned JavaScript from scratch through a fully immersive and hands-on teaching
+                            approach.
+                            In this program, I've gained a solid understanding of the fundamentals JavaScript and its
+                            essential role in the modern Web.
+                        </p>
+                    </li>
+
+                    <li>
+                        <span class="title">English4Tech at DIO</span>
+                        <span class="period">March/2025 - Current</span>
+                        <p>
+                            English course focused on real-world technology scenarios, enabling me to
+                            efficiently develop the four key language skills— listening, speaking, reading, and writing—
+                            that will set
+                            me apart in job interviews and everyday situations at major international companies.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section><!--Education Section-->
+
+
+    </main><!--Main End-->
+
+    <!--JavaScript Acordeon Trigger-->
+    <script src="/assets/js/acordeon.js"></script>
+    <!--JavaScript API-->
+    <script src="/assets/js/api.js"></script>
+    <!--HTML Control-->
+    <script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>
