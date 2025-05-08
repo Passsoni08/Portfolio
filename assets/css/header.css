@@ -60,19 +60,19 @@
 }
 
 .information .job::before{
-    background-image: url('assetsicons/position.svg');
+    background-image: url('assets/icons/position.svg');
 }
 
 .information .phone::before{
-    background-image: url('assetsicons/phone.svg');
+    background-image: url('assets/icons/phone.svg');
 }
 
 .information .location::before{
-    background-image: url('assetsicons/location.svg');
+    background-image: url('assets/icons/location.svg');
 }
 
 .information .email::before{
-    background-image: url('assetsicons/email.svg');
+    background-image: url('assets/icons/email.svg');
 }
 
 @media only screen and (min-width: 768px) {
