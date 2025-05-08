@@ -13,7 +13,9 @@ This is a personal portfolio project built with plain HTML, CSS, and JavaScript.
 
 ## 🔗 Data API
 
-The content is loaded dynamically from a public GitHub repository.
+The content is loaded dynamically from this public GitHub repository:
+https://raw.githubusercontent.com/Passsoni08/js-developer-portfolio/refs/heads/main/data/profile.json
+
 This JSON includes:
 - Photo, name, job title
 - Phone, email, and location
