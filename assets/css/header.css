@@ -15,7 +15,7 @@
     height: 2rem;
     background-repeat: no-repeat;
     background-size: contain;
-    background-image: url('assetsimg/header.svg');
+    background-image: url('../img/header.svg');
 }
 
 .header .photo {
