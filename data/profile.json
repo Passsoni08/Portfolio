@@ -1,0 +1,60 @@
+{
+  "name": "Rafael V Passoni",
+  "photo": "assets/img/my-photo.jpeg",
+  "job": "Web Developer & Systems Analyst",
+  "phone": "+55 (16) 99211-7053",
+  "email": "passonirafael08@gmail.com",
+  "location": "Ribeirão Preto, SP - Brasil",
+  "skills": {
+    "hardSkills": [
+      {
+        "name": "JavaScript",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+      },
+      {
+        "name": "HTML5",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+      },
+      {
+        "name": "CSS3",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+      },
+      {
+        "name": "Git",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+      }
+    ],
+    "softSkills": [
+      "Teamwork",
+      "Leadership",
+      "Fast Learner",
+      "Adaptability",
+      "Communication"
+    ]
+  },
+  "languages": ["Portuguese", "English"],
+  "portfolio": [
+    {
+      "name": "Minimal API - Fórmula 1",
+      "url": "https://github.com/Passsoni08/minimal-api-formula1",
+      "github": true
+    },
+    {
+      "name": "Portfolio Profissional",
+      "url": "https://passsoni08.github.io/Portfolio/",
+      "github": false
+    }
+  ],
+  "professionalExperience": [
+    {
+      "name": "",
+      "period": "",
+      "description": ""
+    },
+    {
+      "name": "",
+      "period": "",
+      "description": ""
+    }
+  ]
+}
