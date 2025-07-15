@@ -1,27 +1,27 @@
 {
   "name": "Rafael V Passoni",
   "photo": "assets/img/my-photo.jpeg",
-  "job": "Web Developer & Systems Analyst",
+  "job": "Software Developer",
   "phone": "+55 (16) 99211-7053",
   "email": "passonirafael08@gmail.com",
-  "location": "Ribeirão Preto, SP - Brasil",
+  "location": "Santa Rosa de Viterbo - SP, Brasil",
   "skills": {
     "hardSkills": [
       {
         "name": "JavaScript",
-        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+        "logo": ""
       },
       {
-        "name": "HTML5",
-        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+        "name": "Python",
+        "logo": ""
       },
       {
-        "name": "CSS3",
-        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+        "name": "TypeScript",
+        "logo": ""
       },
       {
-        "name": "Git",
-        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+        "name": "HTML",
+        "logo": "assets/icons/html.svg"
       }
     ],
     "softSkills": [
@@ -32,7 +32,7 @@
       "Communication"
     ]
   },
-  "languages": ["Portuguese", "English"],
+  "languages": ["Portuguese", "English", "Spanish"],
   "portfolio": [
     {
       "name": "Minimal API - Fórmula 1",
@@ -40,10 +40,22 @@
       "github": true
     },
     {
-      "name": "Portfolio Profissional",
+      "name": "Portfolio",
       "url": "https://passsoni08.github.io/Portfolio/",
-      "github": false
+      "github": true
+    },
+    {
+      "name": "Pokedex",
+      "url": "https://github.com/Passsoni08/Pokedex",
+      "github": true
+    },
+    {
+      "name": "Spotify",
+      "url": "https://github.com/Passsoni08/CloneSpotify",
+      "github": true
     }
+        
+
   ],
   "professionalExperience": [
     {
