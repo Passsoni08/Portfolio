@@ -9,15 +9,15 @@
     "hardSkills": [
       {
         "name": "JavaScript",
-        "logo": ""
+        "logo": "assets/icons/javascript.svg"
       },
       {
         "name": "Python",
-        "logo": ""
+        "logo": "assets/icons/python.svg"
       },
       {
         "name": "TypeScript",
-        "logo": ""
+        "logo": "assets/icons/type.svg"
       },
       {
         "name": "HTML",
@@ -40,8 +40,8 @@
       "github": true
     },
     {
-      "name": "Portfolio",
-      "url": "https://passsoni08.github.io/Portfolio/",
+      "name": "Podcast Controller",
+      "url": "https://github.com/Passsoni08/PodcastController",
       "github": true
     },
     {
