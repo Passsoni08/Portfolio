@@ -22,6 +22,10 @@
       {
         "name": "HTML",
         "logo": "assets/icons/html.svg"
+      },
+      {
+        "name": "AWS",
+        "logo": "assets/icons/aws.svg"
       }
     ],
     "softSkills": [
