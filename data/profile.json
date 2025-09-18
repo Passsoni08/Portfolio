@@ -2,7 +2,7 @@
   "name": "Rafael V Passoni",
   "photo": "assets/img/my-photo.jpeg",
   "job": "Software Developer",
-  "phone": "+55 (16) 99211-7053",
+  "phone": "+55 (16) 99282-6962",
   "email": "passonirafael08@gmail.com",
   "location": "Santa Rosa de Viterbo - SP, Brasil",
   "skills": {
@@ -63,14 +63,10 @@
   ],
   "professionalExperience": [
     {
-      "name": "",
-      "period": "",
-      "description": ""
-    },
-    {
-      "name": "",
-      "period": "",
-      "description": ""
+      "name": "Coordenador Técnico",
+      "period": "01/2024-01/2025",
+      "description": "Responsável pela coordenação do evento Intercolegial, que acontece no estado do Rio de Janeiro."
     }
+    
   ]
 }
