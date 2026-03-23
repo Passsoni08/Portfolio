@@ -2,21 +2,35 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useApi } from '../hooks/useApi';
 import { fetchPortfolioData } from '../services/api';
+import Navbar from '../components/layout/Navbar';
 import Loader from '../components/sections/Loader';
 import Hero from '../components/sections/Hero';
+import About from '../components/sections/About';
+import Skills from '../components/sections/Skills';
+import Projects from '../components/sections/Projects';
+import Experience from '../components/sections/Experience';
+import Contact from '../components/sections/Contact';
+import Footer from '../components/layout/Footer';
 
 export default function HomePage() {
   const { data } = useApi(fetchPortfolioData);
   const [loaderDone, setLoaderDone] = useState(false);
 
+  const skillCount = data?.skill_categories?.reduce(
+    (acc, cat) => acc + cat.skills.length,
+    0
+  ) ?? 0;
+
   return (
     <>
       <Helmet>
         <title>Rafael Passoni | Software Developer</title>
-        <meta name="description" content="Portfolio of Rafael V Passoni - Software Developer from Brazil" />
+        <meta name="description" content="Portfolio of Rafael V Passoni - Software Developer from Brazil. Built with Django REST API and React." />
       </Helmet>
 
       <Loader onComplete={() => setLoaderDone(true)} />
+
+      {loaderDone && <Navbar />}
 
       <main>
         <Hero
@@ -25,97 +39,31 @@ export default function HomePage() {
           visible={loaderDone}
         />
 
-        {/* Placeholder sections - will be built in Phase 2 & 3 */}
-        <section className="section container" id="about">
-          <h2 style={{ fontSize: 'var(--text-h2)', marginBottom: '2rem' }}>About</h2>
-          <p style={{ color: 'var(--color-text-muted)', maxWidth: '600px', lineHeight: 1.8 }}>
-            {data?.profile?.bio || 'Section coming soon.'}
-          </p>
-        </section>
+        <About
+          bio={data?.profile?.bio}
+          projectCount={data?.projects?.length ?? 0}
+          skillCount={skillCount}
+        />
 
-        <section className="section container" id="skills">
-          <h2 style={{ fontSize: 'var(--text-h2)', marginBottom: '2rem' }}>Skills</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-            {data?.skill_categories?.map((cat) =>
-              cat.skills.map((skill) => (
-                <span
-                  key={skill.id}
-                  style={{
-                    padding: '0.5rem 1rem',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: '4px',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-small)',
-                    color: 'var(--color-text-muted)',
-                  }}
-                >
-                  {skill.name}
-                </span>
-              ))
-            )}
-          </div>
-        </section>
+        <Skills categories={data?.skill_categories ?? []} />
 
-        <section className="section container" id="projects">
-          <h2 style={{ fontSize: 'var(--text-h2)', marginBottom: '2rem' }}>Projects</h2>
-          <div style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
-            {data?.projects?.map((project) => (
-              <div
-                key={project.id}
-                style={{
-                  padding: '1.5rem',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '8px',
-                  background: 'var(--color-bg-elevated)',
-                }}
-              >
-                <h3 style={{ fontSize: 'var(--text-h3)', marginBottom: '0.5rem' }}>
-                  {project.title}
-                </h3>
-                <p style={{ color: 'var(--color-text-muted)', fontSize: 'var(--text-small)', marginBottom: '1rem' }}>
-                  {project.short_description}
-                </p>
-                {project.github_url && (
-                  <a
-                    href={project.github_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: 'var(--color-accent)',
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: 'var(--text-small)',
-                    }}
-                  >
-                    GitHub →
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
+        <Projects projects={data?.projects ?? []} />
 
-        <section className="section container" id="experience">
-          <h2 style={{ fontSize: 'var(--text-h2)', marginBottom: '2rem' }}>Experience</h2>
-          {data?.experience?.map((exp) => (
-            <div key={exp.id} style={{ marginBottom: '2rem' }}>
-              <h3 style={{ fontSize: 'var(--text-h3)' }}>{exp.title}</h3>
-              <p style={{ color: 'var(--color-accent)', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-small)' }}>
-                {exp.company} · {exp.start_date} - {exp.end_date || 'Present'}
-              </p>
-              <p style={{ color: 'var(--color-text-muted)', marginTop: '0.5rem' }}>
-                {exp.description}
-              </p>
-            </div>
-          ))}
-        </section>
+        <Experience experiences={data?.experience ?? []} />
 
-        <section className="section container" id="contact" style={{ paddingBottom: 'var(--section-padding)' }}>
-          <h2 style={{ fontSize: 'var(--text-h2)', marginBottom: '2rem' }}>Contact</h2>
-          <p style={{ color: 'var(--color-text-muted)' }}>
-            {data?.profile?.email} · {data?.profile?.phone}
-          </p>
-        </section>
+        <Contact
+          email={data?.profile?.email}
+          phone={data?.profile?.phone}
+          githubUrl={data?.profile?.github_url}
+          linkedinUrl={data?.profile?.linkedin_url}
+        />
       </main>
+
+      <Footer
+        githubUrl={data?.profile?.github_url}
+        linkedinUrl={data?.profile?.linkedin_url}
+        email={data?.profile?.email}
+      />
     </>
   );
 }
