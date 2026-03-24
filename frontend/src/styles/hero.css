@@ -14,7 +14,7 @@
     linear-gradient(90deg, var(--color-border) 1px, transparent 1px),
     linear-gradient(var(--color-border) 1px, transparent 1px);
   background-size: 80px 80px;
-  opacity: 0.15;
+  opacity: 0.08;
   pointer-events: none;
 }
 

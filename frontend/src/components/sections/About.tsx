@@ -52,7 +52,12 @@ export default function About({ bio, projectCount, skillCount }: AboutProps) {
       <div className="about">
         <RevealOnScroll clipPath>
           <div className="about__image">
-            <div className="about__avatar">RP</div>
+            <img
+              src="/profile-photo.jpg"
+              alt="Rafael Passoni"
+              loading="lazy"
+              className="about__photo"
+            />
           </div>
         </RevealOnScroll>
 

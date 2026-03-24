@@ -64,6 +64,10 @@ export default function HomePage() {
 
       {loaderDone && <Navbar />}
 
+      <div className="mesh-bg" aria-hidden="true">
+        <div className="mesh-bg__blob" />
+      </div>
+
       <main>
         <Hero
           name={data?.profile?.name}

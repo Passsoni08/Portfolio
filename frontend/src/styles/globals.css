@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  /* Colors */
-  --color-bg: #0a0a0a;
-  --color-bg-elevated: #141414;
-  --color-bg-card: #1a1a1a;
+  /* Colors — navy palette */
+  --color-bg: #080d15;
+  --color-bg-elevated: #0f1923;
+  --color-bg-card: rgba(18, 31, 46, 0.6);
   --color-text: #f5f5f5;
-  --color-text-muted: #888888;
-  --color-text-dim: #555555;
+  --color-text-muted: #8899aa;
+  --color-text-dim: #506070;
   --color-accent: #00ff88;
   --color-accent-hover: #00cc6a;
   --color-accent-dim: rgba(0, 255, 136, 0.1);
-  --color-border: #222222;
-  --color-border-hover: #333333;
+  --color-border: #1a2a3a;
+  --color-border-hover: #243a4f;
 
   /* Typography */
   --font-display: 'Space Grotesk', sans-serif;
@@ -229,5 +229,96 @@ textarea:focus-visible {
   }
   to {
     opacity: 1;
+  }
+}
+
+/* Animated mesh gradient background */
+.mesh-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mesh-bg::before,
+.mesh-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.mesh-bg::before {
+  width: 600px;
+  height: 600px;
+  top: -10%;
+  left: -5%;
+  background: radial-gradient(circle, #0d1b2a 0%, transparent 70%);
+  filter: blur(80px);
+  opacity: 0.7;
+  animation: meshFloat1 20s ease-in-out infinite;
+}
+
+.mesh-bg::after {
+  width: 500px;
+  height: 500px;
+  bottom: -10%;
+  right: -5%;
+  background: radial-gradient(circle, #0a2a2a 0%, transparent 70%);
+  filter: blur(100px);
+  opacity: 0.5;
+  animation: meshFloat2 25s ease-in-out infinite;
+}
+
+.mesh-bg__blob {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 40%;
+  left: 50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #0a1a10 0%, transparent 70%);
+  filter: blur(90px);
+  opacity: 0.4;
+  animation: meshFloat3 30s ease-in-out infinite;
+}
+
+@keyframes meshFloat1 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(80px, 60px); }
+  50% { transform: translate(40px, 120px); }
+  75% { transform: translate(-40px, 80px); }
+}
+
+@keyframes meshFloat2 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-60px, -40px); }
+  50% { transform: translate(-100px, -80px); }
+  75% { transform: translate(-30px, -120px); }
+}
+
+@keyframes meshFloat3 {
+  0%, 100% { transform: translate(-50%, 0); }
+  33% { transform: translate(-60%, 60px); }
+  66% { transform: translate(-40%, -40px); }
+}
+
+@media (max-width: 768px) {
+  .mesh-bg::before {
+    width: 300px;
+    height: 300px;
+    filter: blur(60px);
+  }
+
+  .mesh-bg::after {
+    width: 250px;
+    height: 250px;
+    filter: blur(80px);
+  }
+
+  .mesh-bg__blob {
+    width: 200px;
+    height: 200px;
+    filter: blur(70px);
   }
 }

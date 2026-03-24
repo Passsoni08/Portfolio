@@ -13,7 +13,7 @@ const mockProject: Project = {
   live_url: '',
   github_url: 'https://github.com/test/project',
   technologies: [
-    { id: 1, name: 'React', icon: null, proficiency: 90 },
+    { id: 1, name: 'React', icon: null, icon_url: '', proficiency: 90 },
   ],
   featured: false,
   order: 0,

@@ -63,7 +63,7 @@ export default function Skills({ categories }: SkillsProps) {
 
   return (
     <section className="section container" id="skills" ref={barsRef}>
-      <SplitText as="h2" type="words" className="skills__heading">
+      <SplitText as="h2" type="words" className="skills__heading" y={20}>
         Skills
       </SplitText>
 
@@ -77,6 +77,14 @@ export default function Skills({ categories }: SkillsProps) {
                 <div className="skills__list">
                   {cat.skills.map((skill) => (
                     <div key={skill.id} className="skills__item">
+                      {skill.icon_url && (
+                        <img
+                          src={skill.icon_url}
+                          alt={skill.name}
+                          className="skills__icon"
+                          loading="lazy"
+                        />
+                      )}
                       <span
                         className="skills__name"
                         ref={(el) => {

@@ -37,6 +37,7 @@ class SkillCategory(models.Model):
 class Skill(models.Model):
     name = models.CharField(max_length=50)
     icon = models.FileField(upload_to='skills/', blank=True)
+    icon_url = models.URLField(blank=True)
     proficiency = models.IntegerField(default=80)
     category = models.ForeignKey(
         SkillCategory, on_delete=models.CASCADE, related_name='skills'

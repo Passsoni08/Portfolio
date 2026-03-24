@@ -5,35 +5,37 @@
   "phone": "+55 (16) 99282-6962",
   "email": "passonirafael08@gmail.com",
   "location": "Santa Rosa de Viterbo - SP, Brasil",
+  "github_url": "https://github.com/Passsoni08",
+  "linkedin_url": "https://www.linkedin.com/in/passonirafael/",
   "skills": {
-    "hardSkills": [
-      {
-        "name": "JavaScript",
-        "logo": "assets/icons/javascript.svg"
-      },
-      {
-        "name": "Python",
-        "logo": "assets/icons/python.svg"
-      },
-      {
-        "name": "TypeScript",
-        "logo": "assets/icons/type.svg"
-      },
-      {
-        "name": "HTML",
-        "logo": "assets/icons/html.svg"
-      },
-      {
-        "name": "AWS",
-        "logo": "assets/icons/aws.svg"
-      }
+    "backend": [
+      { "name": "Node.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", "proficiency": 80 },
+      { "name": "JavaScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", "proficiency": 80 },
+      { "name": "Django", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg", "proficiency": 80 },
+      { "name": "DRF", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/djangorest/djangorest-original.svg", "proficiency": 80 },
+      { "name": "Docker", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", "proficiency": 80 }
+    ],
+    "frontend": [
+      { "name": "TypeScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", "proficiency": 80 },
+      { "name": "React", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", "proficiency": 80 },
+      { "name": "Next.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", "proficiency": 80 },
+      { "name": "Tailwind CSS", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg", "proficiency": 80 },
+      { "name": "shadcn/ui", "icon": "/icons/shadcn.svg", "proficiency": 80 }
+    ],
+    "aiTools": [
+      { "name": "Claude Code", "icon": "/icons/claude.svg", "proficiency": 80 },
+      { "name": "Codex", "icon": "/icons/openai.svg", "proficiency": 80 }
+    ],
+    "workspace": [
+      { "name": "VS Code", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg", "proficiency": 80 }
     ],
     "softSkills": [
       "Teamwork",
       "Leadership",
       "Fast Learner",
       "Adaptability",
-      "Communication"
+      "Communication",
+      "Creative"
     ]
   },
   "languages": ["Portuguese", "English", "Spanish"],
@@ -49,24 +51,21 @@
       "github": true
     },
     {
-      "name": "Pokedex",
-      "url": "https://github.com/Passsoni08/Pokedex",
+      "name": "Personal Expense Control",
+      "url": "https://github.com/Passsoni08/ControleDespesas",
       "github": true
     },
     {
-      "name": "Spotify",
-      "url": "https://github.com/Passsoni08/CloneSpotify",
+      "name": "Agenda-SaaS",
+      "url": "https://github.com/Passsoni08/agenda-saas",
       "github": true
     }
-        
-
   ],
   "professionalExperience": [
     {
-      "name": "Coordenador Técnico",
+      "name": "Manager of Events",
       "period": "01/2024-01/2025",
-      "description": "Responsável pela coordenação do evento Intercolegial, que acontece no estado do Rio de Janeiro."
+      "description": "Responsible for communicating with over 100 representatives from participating schools, creating and sharing game schedules, organizing and conducting technical meetings, maintaining direct communication with event sponsors, and carrying out technical inspections at game and party venues."
     }
-    
   ]
 }

@@ -35,37 +35,64 @@ class Command(BaseCommand):
                 'job_title': data['job'],
                 'phone': data.get('phone', ''),
                 'location': data.get('location', ''),
-                'github_url': 'https://github.com/Passsoni08',
+                'github_url': data.get('github_url', ''),
+                'linkedin_url': data.get('linkedin_url', ''),
             },
         )
         action = 'Created' if created else 'Updated'
         self.stdout.write(self.style.SUCCESS(f'{action} profile: {profile.name}'))
 
-        # Hard Skills
-        hard_cat, _ = SkillCategory.objects.get_or_create(
-            name='Hard Skills',
-            defaults={'category_type': 'hard', 'order': 0},
-        )
-        for i, skill_data in enumerate(data.get('skills', {}).get('hardSkills', [])):
-            Skill.objects.update_or_create(
-                name=skill_data['name'],
-                category=hard_cat,
-                defaults={'order': i},
+        # Clear old hard skill categories and skills
+        Skill.objects.filter(category__category_type='hard').delete()
+        SkillCategory.objects.filter(category_type='hard').delete()
+
+        # Hard Skills — 4 categories
+        skills_data = data.get('skills', {})
+        hard_categories = [
+            ('Backend', 'backend', 0),
+            ('Frontend', 'frontend', 1),
+            ('Workspace', 'workspace', 2),
+            ('AI Tools', 'aiTools', 3),
+        ]
+
+        total_hard = 0
+        for cat_name, json_key, order in hard_categories:
+            cat_skills = skills_data.get(json_key, [])
+            if not cat_skills:
+                continue
+
+            category = SkillCategory.objects.create(
+                name=cat_name,
+                category_type='hard',
+                order=order,
             )
-        self.stdout.write(self.style.SUCCESS(f'Seeded {len(data["skills"]["hardSkills"])} hard skills'))
+
+            for i, skill in enumerate(cat_skills):
+                Skill.objects.create(
+                    name=skill['name'],
+                    category=category,
+                    proficiency=skill.get('proficiency', 70),
+                    icon_url=skill.get('icon', '') or '',
+                    order=i,
+                )
+                total_hard += 1
+
+        self.stdout.write(self.style.SUCCESS(f'Seeded {total_hard} hard skills in 4 categories'))
 
         # Soft Skills
-        soft_cat, _ = SkillCategory.objects.get_or_create(
+        soft_cat, _ = SkillCategory.objects.update_or_create(
             name='Soft Skills',
-            defaults={'category_type': 'soft', 'order': 1},
+            defaults={'category_type': 'soft', 'order': 4},
         )
-        for i, skill_name in enumerate(data.get('skills', {}).get('softSkills', [])):
-            Skill.objects.update_or_create(
+        # Clear old soft skills and re-create
+        Skill.objects.filter(category=soft_cat).delete()
+        for i, skill_name in enumerate(skills_data.get('softSkills', [])):
+            Skill.objects.create(
                 name=skill_name,
                 category=soft_cat,
-                defaults={'order': i},
+                order=i,
             )
-        self.stdout.write(self.style.SUCCESS(f'Seeded {len(data["skills"]["softSkills"])} soft skills'))
+        self.stdout.write(self.style.SUCCESS(f'Seeded {len(skills_data.get("softSkills", []))} soft skills'))
 
         # Languages
         level_map = {
@@ -94,7 +121,8 @@ class Command(BaseCommand):
             )
         self.stdout.write(self.style.SUCCESS(f'Seeded {len(data["portfolio"])} projects'))
 
-        # Experience
+        # Experience — clear old and recreate
+        Experience.objects.all().delete()
         for i, exp in enumerate(data.get('professionalExperience', [])):
             period = exp.get('period', '').split('-')
             start_parts = period[0].strip().split('/') if period else ['01', '2024']

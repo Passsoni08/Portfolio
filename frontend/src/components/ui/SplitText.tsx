@@ -47,23 +47,28 @@ export default function SplitText({
       ease: 'power3.out',
     };
 
+    let st: ScrollTrigger | null = null;
+
     if (trigger) {
-      gsap.to(elements, {
-        ...animationProps,
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
+      st = ScrollTrigger.create({
+        trigger: el,
+        start: 'top 90%',
+        once: true,
+        onEnter: () => {
+          gsap.to(elements, animationProps);
         },
+      });
+
+      // Force refresh to sync with Lenis scroll position
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
       });
     } else {
       gsap.to(elements, animationProps);
     }
 
     return () => {
-      ScrollTrigger.getAll()
-        .filter((st) => st.trigger === el)
-        .forEach((st) => st.kill());
+      if (st) st.kill();
     };
   }, [children, duration, stagger, delay, trigger, y]);
 
@@ -94,7 +99,7 @@ export default function SplitText({
 
   return (
     // @ts-expect-error dynamic tag
-    <Tag ref={containerRef} className={className} style={{ overflow: 'hidden' }}>
+    <Tag ref={containerRef} className={className}>
       {splitContent()}
     </Tag>
   );
