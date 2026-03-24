@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/navbar.css';
 
 const NAV_ITEMS = [
@@ -7,9 +8,11 @@ const NAV_ITEMS = [
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Docs', href: '/docs' },
 ];
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,11 +49,15 @@ export default function Navbar() {
 
   const scrollTo = useCallback((href: string) => {
     setIsOpen(false);
+    if (href.startsWith('/')) {
+      setTimeout(() => navigate(href), 300);
+      return;
+    }
     setTimeout(() => {
       const el = document.querySelector(href);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, 400);
-  }, []);
+  }, [navigate]);
 
   const navClasses = [
     'navbar',
