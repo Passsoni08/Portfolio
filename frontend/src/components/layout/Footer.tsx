@@ -16,11 +16,12 @@ export default function Footer({ githubUrl, linkedinUrl, email }: FooterProps) {
           <span> &middot; Built with Django &amp; React</span>
         </div>
 
-        <div className="footer__links">
+        <div className="footer__links" aria-label="Social links">
           {githubUrl && (
             <MagneticButton
               className="footer__link"
               onClick={() => window.open(githubUrl, '_blank')}
+              aria-label="GitHub"
             >
               GH
             </MagneticButton>
@@ -29,6 +30,7 @@ export default function Footer({ githubUrl, linkedinUrl, email }: FooterProps) {
             <MagneticButton
               className="footer__link"
               onClick={() => window.open(linkedinUrl, '_blank')}
+              aria-label="LinkedIn"
             >
               LI
             </MagneticButton>
@@ -37,6 +39,7 @@ export default function Footer({ githubUrl, linkedinUrl, email }: FooterProps) {
             <MagneticButton
               className="footer__link"
               onClick={() => window.open(`mailto:${email}`)}
+              aria-label="Email"
             >
               @
             </MagneticButton>

@@ -19,6 +19,16 @@
   }
 }
 
+@media (min-width: 1280px) {
+  .projects__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .project-card--featured {
+    grid-column: span 2;
+  }
+}
+
 .project-card {
   position: relative;
   border-radius: 8px;

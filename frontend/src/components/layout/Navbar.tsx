@@ -79,6 +79,8 @@ export default function Navbar() {
           className={`navbar__hamburger ${isOpen ? 'navbar__hamburger--open' : ''}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isOpen}
+          aria-controls="nav-overlay"
         >
           <span />
           <span />
@@ -86,7 +88,7 @@ export default function Navbar() {
         </button>
       </header>
 
-      <div className={`navbar__overlay ${isOpen ? 'navbar__overlay--open' : ''}`}>
+      <div id="nav-overlay" className={`navbar__overlay ${isOpen ? 'navbar__overlay--open' : ''}`} role="dialog" aria-modal="true" aria-label="Navigation menu">
         <nav>
           <ul className="navbar__nav">
             {NAV_ITEMS.map((item) => (

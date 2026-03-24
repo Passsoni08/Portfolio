@@ -6,6 +6,7 @@ interface MagneticButtonProps {
   className?: string;
   strength?: number;
   onClick?: () => void;
+  'aria-label'?: string;
 }
 
 export default function MagneticButton({
@@ -13,6 +14,7 @@ export default function MagneticButton({
   className = '',
   strength = 0.3,
   onClick,
+  'aria-label': ariaLabel,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -51,6 +53,7 @@ export default function MagneticButton({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
+      aria-label={ariaLabel}
     >
       {children}
     </button>

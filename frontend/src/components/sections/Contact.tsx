@@ -85,27 +85,27 @@ export default function Contact({ email, phone, githubUrl, linkedinUrl }: Contac
         <RevealOnScroll delay={0.2} x={30} y={0}>
           <form className="contact__form" onSubmit={handleSubmit}>
             <div className="contact__field">
-              <input type="text" name="name" placeholder=" " required />
-              <label>Name</label>
+              <input type="text" name="name" id="contact-name" placeholder=" " required aria-required="true" />
+              <label htmlFor="contact-name">Name</label>
             </div>
             <div className="contact__field">
-              <input type="email" name="email" placeholder=" " required />
-              <label>Email</label>
+              <input type="email" name="email" id="contact-email" placeholder=" " required aria-required="true" />
+              <label htmlFor="contact-email">Email</label>
             </div>
             <div className="contact__field">
-              <input type="text" name="subject" placeholder=" " required />
-              <label>Subject</label>
+              <input type="text" name="subject" id="contact-subject" placeholder=" " required aria-required="true" />
+              <label htmlFor="contact-subject">Subject</label>
             </div>
             <div className="contact__field">
-              <textarea name="message" placeholder=" " rows={4} required />
-              <label>Message</label>
+              <textarea name="message" id="contact-message" placeholder=" " rows={4} required aria-required="true" />
+              <label htmlFor="contact-message">Message</label>
             </div>
 
             {status === 'success' && (
-              <div className="contact__success">Message sent successfully!</div>
+              <div className="contact__success" role="status">Message sent successfully!</div>
             )}
             {status === 'error' && (
-              <div className="contact__error">Something went wrong. Try again later.</div>
+              <div className="contact__error" role="alert">Something went wrong. Try again later.</div>
             )}
 
             <MagneticButton

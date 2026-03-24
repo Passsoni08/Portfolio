@@ -17,6 +17,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <img
             src={project.thumbnail}
             alt={project.title}
+            loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         ) : (

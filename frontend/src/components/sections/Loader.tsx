@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import '../../styles/loader.css';
 
 interface LoaderProps {
   onComplete: () => void;
@@ -62,46 +63,9 @@ export default function Loader({ onComplete }: LoaderProps) {
   if (!shouldShow) return null;
 
   return (
-    <div
-      ref={loaderRef}
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 'var(--z-loader)' as unknown as number,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'var(--color-bg)',
-        clipPath: 'inset(0 0 0% 0)',
-      }}
-    >
-      <div
-        ref={nameRef}
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2rem, 6vw, 5rem)',
-          fontWeight: 700,
-          letterSpacing: '-0.03em',
-          color: 'var(--color-text)',
-          textTransform: 'uppercase',
-        }}
-      >
-        Rafael Passoni
-      </div>
-      <div
-        ref={subtitleRef}
-        style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: 'var(--text-small)',
-          color: 'var(--color-accent)',
-          marginTop: '0.75rem',
-          letterSpacing: '0.15em',
-          textTransform: 'uppercase',
-        }}
-      >
-        Software Developer
-      </div>
+    <div ref={loaderRef} className="loader" role="status" aria-label="Loading portfolio">
+      <div ref={nameRef} className="loader__name">Rafael Passoni</div>
+      <div ref={subtitleRef} className="loader__subtitle">Software Developer</div>
     </div>
   );
 }

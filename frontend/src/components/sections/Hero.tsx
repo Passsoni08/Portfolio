@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import SplitText from '../ui/SplitText';
+import '../../styles/hero.css';
 
 interface HeroProps {
   name?: string;
@@ -15,7 +16,6 @@ export default function Hero({ name = 'Rafael Passoni', jobTitle = 'Software Dev
   useEffect(() => {
     if (!visible) return;
 
-    // Scroll indicator breathing animation
     if (scrollIndicatorRef.current) {
       gsap.to(scrollIndicatorRef.current, {
         y: 8,
@@ -27,7 +27,6 @@ export default function Hero({ name = 'Rafael Passoni', jobTitle = 'Software Dev
       });
     }
 
-    // Live clock
     const updateTime = () => {
       if (timeRef.current) {
         timeRef.current.textContent = new Date().toLocaleTimeString('en-US', {
@@ -45,47 +44,11 @@ export default function Hero({ name = 'Rafael Passoni', jobTitle = 'Software Dev
   }, [visible]);
 
   return (
-    <section
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        position: 'relative',
-        padding: '0 5vw',
-      }}
-    >
-      {/* Grid decoration */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: `
-            linear-gradient(90deg, var(--color-border) 1px, transparent 1px),
-            linear-gradient(var(--color-border) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px',
-          opacity: 0.15,
-          pointerEvents: 'none',
-        }}
-      />
+    <section className="hero">
+      <div className="hero__grid-bg" aria-hidden="true" />
+      <div className="hero__glow" aria-hidden="true" />
 
-      {/* Accent glow */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '20%',
-          right: '10%',
-          width: '400px',
-          height: '400px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, var(--color-accent-dim) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      <div style={{ position: 'relative', zIndex: 1 }}>
+      <div className="hero__content">
         {visible && (
           <>
             <SplitText
@@ -95,12 +58,12 @@ export default function Hero({ name = 'Rafael Passoni', jobTitle = 'Software Dev
               duration={1}
               trigger={false}
               delay={0.2}
-              className=""
+              className="hero__title"
             >
               {name.toUpperCase()}
             </SplitText>
 
-            <div style={{ marginTop: '1.5rem' }}>
+            <div className="hero__subtitle">
               <SplitText
                 as="p"
                 type="words"
@@ -116,58 +79,21 @@ export default function Hero({ name = 'Rafael Passoni', jobTitle = 'Software Dev
         )}
       </div>
 
-      {/* Hero H1 style */}
-      <style>{`
-        section h1 {
-          font-size: var(--text-hero);
-          font-weight: 700;
-          letter-spacing: -0.04em;
-          line-height: 0.95;
-        }
-        section p {
-          font-family: var(--font-mono);
-          font-size: var(--text-h3);
-          color: var(--color-accent);
-          letter-spacing: 0.05em;
-        }
-      `}</style>
-
-      {/* Bottom bar */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '2rem',
-          left: '5vw',
-          right: '5vw',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          fontFamily: 'var(--font-mono)',
-          fontSize: 'var(--text-xs)',
-          color: 'var(--color-text-muted)',
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-        }}
-      >
+      <div className="hero__bottom-bar" aria-hidden="true">
         <div>
           <span ref={timeRef}>--:--</span>
-          <span style={{ marginLeft: '0.5rem' }}>BRT</span>
+          <span className="hero__time-zone">BRT</span>
         </div>
 
-        <div
-          ref={scrollIndicatorRef}
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.25rem' }}
-        >
+        <div ref={scrollIndicatorRef} className="hero__scroll-indicator">
           <span>Scroll</span>
-          <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
             <line x1="8" y1="0" x2="8" y2="20" />
             <polyline points="2,14 8,20 14,14" />
           </svg>
         </div>
 
-        <div>
-          Santa Rosa de Viterbo, BR
-        </div>
+        <div>Santa Rosa de Viterbo, BR</div>
       </div>
     </section>
   );

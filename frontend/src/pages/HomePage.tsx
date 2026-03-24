@@ -25,8 +25,40 @@ export default function HomePage() {
     <>
       <Helmet>
         <title>Rafael Passoni | Software Developer</title>
-        <meta name="description" content="Portfolio of Rafael V Passoni - Software Developer from Brazil. Built with Django REST API and React." />
+        <meta name="description" content="Portfolio of Rafael V Passoni - Software Developer from Brazil. Fullstack engineer building with Django, React, TypeScript, and GSAP." />
+        <link rel="canonical" href="https://rafaelpassoni.dev" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Rafael Passoni | Software Developer" />
+        <meta property="og:description" content="Fullstack portfolio built with Django REST API and React. Featuring scroll-driven animations, CI/CD pipeline, and technical documentation." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://rafaelpassoni.dev" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Rafael Passoni | Software Developer" />
+        <meta name="twitter:description" content="Fullstack portfolio built with Django REST API and React." />
+
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">{JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: 'Rafael V Passoni',
+          jobTitle: 'Software Developer',
+          url: 'https://rafaelpassoni.dev',
+          email: 'passonirafael08@gmail.com',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Santa Rosa de Viterbo',
+            addressRegion: 'SP',
+            addressCountry: 'BR',
+          },
+          sameAs: ['https://github.com/Passsoni08'],
+          knowsAbout: ['Python', 'Django', 'React', 'TypeScript', 'JavaScript', 'AWS'],
+        })}</script>
       </Helmet>
+
+      <a href="#about" className="skip-to-content">Skip to content</a>
 
       <Loader onComplete={() => setLoaderDone(true)} />
 

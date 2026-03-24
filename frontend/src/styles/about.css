@@ -79,3 +79,16 @@
   letter-spacing: 0.1em;
   margin-top: 0.5rem;
 }
+
+@media (max-width: 480px) {
+  .about__image {
+    aspect-ratio: 1 / 1;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .about__stats {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
