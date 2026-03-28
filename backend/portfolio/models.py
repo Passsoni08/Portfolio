@@ -57,6 +57,7 @@ class Project(models.Model):
     description = models.TextField()
     short_description = models.CharField(max_length=300)
     thumbnail = models.ImageField(upload_to='projects/', blank=True)
+    thumbnail_url = models.CharField(max_length=500, blank=True)
     live_url = models.URLField(blank=True)
     github_url = models.URLField(blank=True)
     technologies = models.ManyToManyField(Skill, blank=True, related_name='projects')

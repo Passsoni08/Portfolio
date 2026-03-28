@@ -66,6 +66,16 @@
       "name": "Manager of Events",
       "period": "01/2024-01/2025",
       "description": "Responsible for communicating with over 100 representatives from participating schools, creating and sharing game schedules, organizing and conducting technical meetings, maintaining direct communication with event sponsors, and carrying out technical inspections at game and party venues."
+    },
+    {
+      "name": "Intern Web Developer",
+      "period": "10/2025-12/2026",
+      "description": "web developer with hands-on experience building fullstack applications using modern technologies. I worked with frameworks like React and Next.js on the frontend, and Node.js and Django REST Framework on the backend, focusing on scalability, clean architecture, and performance"
+    },
+    {
+      "name": "Junior Web Developer",
+      "period": "01/2026 - Present",
+      "description": "I work as a Junior Web Developer, building and maintaining web applications using modern technologies. I contribute to both frontend and backend development, working with tools such as React and Next.js, as well as Node.js and Django REST Framework. In my role, I support the implementation of RESTful APIs, authentication with JWT, and automated tests. I collaborate with team members to deliver features on time, fix bugs, and improve application performance. This experience helps me strengthen my understanding of clean code practices, version control, and CI/CD pipelines, while continuously improving my problem-solving skills and attention to detail."
     }
   ]
 }

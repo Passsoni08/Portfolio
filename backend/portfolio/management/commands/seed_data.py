@@ -126,10 +126,11 @@ class Command(BaseCommand):
         for i, exp in enumerate(data.get('professionalExperience', [])):
             period = exp.get('period', '').split('-')
             start_parts = period[0].strip().split('/') if period else ['01', '2024']
-            end_parts = period[1].strip().split('/') if len(period) > 1 else None
+            end_raw = period[1].strip() if len(period) > 1 else None
+            end_parts = end_raw.split('/') if end_raw and end_raw.lower() != 'present' else None
 
             start_date = f'{start_parts[1]}-{start_parts[0]}-01'
-            end_date = f'{end_parts[1]}-{end_parts[0]}-01' if end_parts else None
+            end_date = f'{end_parts[1]}-{end_parts[0]}-01' if end_parts and len(end_parts) == 2 else None
 
             Experience.objects.update_or_create(
                 title=exp['name'],
