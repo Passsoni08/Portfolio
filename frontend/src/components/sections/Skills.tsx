@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 import SplitText from '../ui/SplitText';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import { useMousePosition } from '../../hooks/useMousePosition';
@@ -14,6 +15,7 @@ interface SkillsProps {
 }
 
 export default function Skills({ categories }: SkillsProps) {
+  const { t } = useTranslation();
   const mouse = useMousePosition();
   const skillNamesRef = useRef<Map<number, HTMLSpanElement>>(new Map());
   const barsRef = useRef<HTMLDivElement>(null);
@@ -64,7 +66,7 @@ export default function Skills({ categories }: SkillsProps) {
   return (
     <section className="section container" id="skills" ref={barsRef}>
       <SplitText as="h2" type="words" className="skills__heading" y={20}>
-        Skills
+        {t('skills.title')}
       </SplitText>
 
       <div className="skills__grid">

@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import SplitText from '../ui/SplitText';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import MagneticButton from '../ui/MagneticButton';
@@ -15,6 +16,7 @@ interface ContactProps {
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
 export default function Contact({ email, phone, githubUrl, linkedinUrl }: ContactProps) {
+  const { t } = useTranslation();
   const [status, setStatus] = useState<Status>('idle');
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -46,13 +48,12 @@ export default function Contact({ email, phone, githubUrl, linkedinUrl }: Contac
       <div className="contact">
         <div>
           <SplitText as="h2" type="words" className="contact__heading">
-            Let's Work Together
+            {t('contact.title')}
           </SplitText>
 
           <RevealOnScroll delay={0.2}>
             <p className="contact__subtext">
-              Have a project in mind or want to collaborate? Feel free to reach out.
-              I'm always open to discussing new ideas and opportunities.
+              {t('contact.subtitle')}
             </p>
           </RevealOnScroll>
 
@@ -60,22 +61,22 @@ export default function Contact({ email, phone, githubUrl, linkedinUrl }: Contac
             <div className="contact__links">
               {email && (
                 <MagneticButton className="contact__link-btn" onClick={() => window.open(`mailto:${email}`)}>
-                  Email
+                  {t('contact.email')}
                 </MagneticButton>
               )}
               {phone && (
                 <MagneticButton className="contact__link-btn" onClick={() => window.open(`tel:${phone}`)}>
-                  Phone
+                  {t('contact.phone')}
                 </MagneticButton>
               )}
               {githubUrl && (
                 <MagneticButton className="contact__link-btn" onClick={() => window.open(githubUrl, '_blank')}>
-                  GitHub
+                  {t('contact.github')}
                 </MagneticButton>
               )}
               {linkedinUrl && (
                 <MagneticButton className="contact__link-btn" onClick={() => window.open(linkedinUrl, '_blank')}>
-                  LinkedIn
+                  {t('contact.linkedin')}
                 </MagneticButton>
               )}
             </div>
@@ -85,34 +86,34 @@ export default function Contact({ email, phone, githubUrl, linkedinUrl }: Contac
         <RevealOnScroll delay={0.2} x={30} y={0}>
           <form className="contact__form" onSubmit={handleSubmit}>
             <div className="contact__field">
-              <input type="text" name="name" id="contact-name" placeholder=" " required aria-required="true" />
-              <label htmlFor="contact-name">Name</label>
+              <input type="text" name="name" id="contact-name" placeholder=" " required aria-required="true" minLength={2} />
+              <label htmlFor="contact-name">{t('contact.name')}</label>
             </div>
             <div className="contact__field">
               <input type="email" name="email" id="contact-email" placeholder=" " required aria-required="true" />
-              <label htmlFor="contact-email">Email</label>
+              <label htmlFor="contact-email">{t('contact.email')}</label>
             </div>
             <div className="contact__field">
-              <input type="text" name="subject" id="contact-subject" placeholder=" " required aria-required="true" />
-              <label htmlFor="contact-subject">Subject</label>
+              <input type="text" name="subject" id="contact-subject" placeholder=" " required aria-required="true" minLength={3} />
+              <label htmlFor="contact-subject">{t('contact.subject')}</label>
             </div>
             <div className="contact__field">
-              <textarea name="message" id="contact-message" placeholder=" " rows={4} required aria-required="true" />
-              <label htmlFor="contact-message">Message</label>
+              <textarea name="message" id="contact-message" placeholder=" " rows={4} required aria-required="true" minLength={10} />
+              <label htmlFor="contact-message">{t('contact.message')}</label>
             </div>
 
             {status === 'success' && (
-              <div className="contact__success" role="status">Message sent successfully!</div>
+              <div className="contact__success" role="status">{t('contact.success')}</div>
             )}
             {status === 'error' && (
-              <div className="contact__error" role="alert">Something went wrong. Try again later.</div>
+              <div className="contact__error" role="alert">{t('contact.error')}</div>
             )}
 
             <MagneticButton
               className="contact__submit"
               strength={0.15}
             >
-              {status === 'sending' ? 'Sending...' : 'Send Message'}
+              {status === 'sending' ? t('contact.sending') : t('contact.send')}
             </MagneticButton>
           </form>
         </RevealOnScroll>

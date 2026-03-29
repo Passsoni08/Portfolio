@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "education": "Education",
+    "contact": "Contact",
+    "docs": "Docs"
+  },
+  "hero": {
+    "scroll": "Scroll",
+    "timezone": "BRT",
+    "location": "Santa Rosa de Viterbo, BR"
+  },
+  "about": {
+    "title": "About Me",
+    "fallbackBio": "Software Developer based in Brazil, passionate about building elegant digital experiences. I combine clean architecture on the backend with polished, animated interfaces on the frontend. Always learning, always shipping.",
+    "yearsExp": "Years Exp",
+    "projects": "Projects",
+    "technologies": "Technologies"
+  },
+  "skills": {
+    "title": "Skills"
+  },
+  "projects": {
+    "title": "Projects",
+    "viewProject": "View project"
+  },
+  "experience": {
+    "title": "Experience",
+    "present": "Present"
+  },
+  "education": {
+    "title": "Education",
+    "present": "Present"
+  },
+  "contact": {
+    "title": "Let's Work Together",
+    "subtitle": "Have a project in mind or want to collaborate? Feel free to reach out. I'm always open to discussing new ideas and opportunities.",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Something went wrong. Try again later.",
+    "phone": "Phone",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "projectDetail": {
+    "loading": "Loading...",
+    "notFound": "Project not found.",
+    "back": "Back to Portfolio",
+    "viewGithub": "View on GitHub",
+    "liveDemo": "Live Demo"
+  },
+  "footer": {
+    "builtWith": "Built with Django & React"
+  }
+}

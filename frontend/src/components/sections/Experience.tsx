@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 import SplitText from '../ui/SplitText';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import type { Experience as ExperienceType } from '../../types';
@@ -12,13 +13,15 @@ interface ExperienceProps {
   experiences: ExperienceType[];
 }
 
-function formatDate(dateStr: string | null): string {
-  if (!dateStr) return 'Present';
-  const d = new Date(dateStr);
+function formatDate(dateStr: string | null, presentLabel: string): string {
+  if (!dateStr) return presentLabel;
+  const [year, month] = dateStr.split('-').map(Number);
+  const d = new Date(year, month - 1);
   return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
 
 export default function Experience({ experiences }: ExperienceProps) {
+  const { t } = useTranslation();
   const lineRef = useRef<SVGLineElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
 
@@ -48,7 +51,7 @@ export default function Experience({ experiences }: ExperienceProps) {
   return (
     <section className="section container" id="experience">
       <SplitText as="h2" type="words" className="experience__heading">
-        Experience
+        {t('experience.title')}
       </SplitText>
 
       <div className="timeline" ref={timelineRef}>
@@ -77,7 +80,7 @@ export default function Experience({ experiences }: ExperienceProps) {
             <div className="timeline__item">
               <div className="timeline__dot" />
               <div className="timeline__date">
-                {formatDate(exp.start_date)} — {formatDate(exp.end_date)}
+                {formatDate(exp.start_date, t('experience.present'))} — {formatDate(exp.end_date, t('experience.present'))}
               </div>
               <h3 className="timeline__title">{exp.title}</h3>
               <div className="timeline__company">{exp.company}</div>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import SplitText from '../ui/SplitText';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import ProjectCard from '../projects/ProjectCard';
@@ -9,10 +10,12 @@ interface ProjectsProps {
 }
 
 export default function Projects({ projects }: ProjectsProps) {
+  const { t } = useTranslation();
+
   return (
     <section className="section container" id="projects">
       <SplitText as="h2" type="words" className="projects__heading">
-        Projects
+        {t('projects.title')}
       </SplitText>
 
       <div className="projects__grid">

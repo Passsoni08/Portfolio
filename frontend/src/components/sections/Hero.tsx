@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { useTranslation } from 'react-i18next';
 import SplitText from '../ui/SplitText';
 import '../../styles/hero.css';
 
@@ -10,6 +11,7 @@ interface HeroProps {
 }
 
 export default function Hero({ name = 'Rafael Passoni', jobTitle = 'Software Developer', visible }: HeroProps) {
+  const { t } = useTranslation();
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const timeRef = useRef<HTMLSpanElement>(null);
 
@@ -82,18 +84,18 @@ export default function Hero({ name = 'Rafael Passoni', jobTitle = 'Software Dev
       <div className="hero__bottom-bar" aria-hidden="true">
         <div>
           <span ref={timeRef}>--:--</span>
-          <span className="hero__time-zone">BRT</span>
+          <span className="hero__time-zone">{t('hero.timezone')}</span>
         </div>
 
         <div ref={scrollIndicatorRef} className="hero__scroll-indicator">
-          <span>Scroll</span>
+          <span>{t('hero.scroll')}</span>
           <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
             <line x1="8" y1="0" x2="8" y2="20" />
             <polyline points="2,14 8,20 14,14" />
           </svg>
         </div>
 
-        <div>Santa Rosa de Viterbo, BR</div>
+        <div>{t('hero.location')}</div>
       </div>
     </section>
   );

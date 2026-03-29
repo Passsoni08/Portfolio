@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import MagneticButton from '../ui/MagneticButton';
 import '../../styles/footer.css';
 
@@ -8,12 +9,14 @@ interface FooterProps {
 }
 
 export default function Footer({ githubUrl, linkedinUrl, email }: FooterProps) {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="container footer__inner">
         <div className="footer__copyright">
           &copy; {new Date().getFullYear()} Rafael Passoni
-          <span> &middot; Built with Django &amp; React</span>
+          <span> &middot; {t('footer.builtWith')}</span>
         </div>
 
         <div className="footer__links" aria-label="Social links">

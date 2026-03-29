@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 import SplitText from '../ui/SplitText';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import '../../styles/about.css';
@@ -14,6 +15,7 @@ interface AboutProps {
 }
 
 export default function About({ bio, projectCount, skillCount }: AboutProps) {
+  const { t } = useTranslation();
   const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -63,12 +65,12 @@ export default function About({ bio, projectCount, skillCount }: AboutProps) {
 
         <div className="about__content">
           <SplitText as="h2" type="words">
-            About Me
+            {t('about.title')}
           </SplitText>
 
           <RevealOnScroll delay={0.2}>
             <p className="about__bio">
-              {bio || 'Software Developer based in Brazil, passionate about building elegant digital experiences. I combine clean architecture on the backend with polished, animated interfaces on the frontend. Always learning, always shipping.'}
+              {bio || t('about.fallbackBio')}
             </p>
           </RevealOnScroll>
 
@@ -76,15 +78,15 @@ export default function About({ bio, projectCount, skillCount }: AboutProps) {
             <div className="about__stats" ref={statsRef}>
               <div>
                 <div className="about__stat-number" data-target="1">0+</div>
-                <div className="about__stat-label">Years Exp</div>
+                <div className="about__stat-label">{t('about.yearsExp')}</div>
               </div>
               <div>
                 <div className="about__stat-number" data-target={projectCount}>0+</div>
-                <div className="about__stat-label">Projects</div>
+                <div className="about__stat-label">{t('about.projects')}</div>
               </div>
               <div>
                 <div className="about__stat-number" data-target={skillCount}>0+</div>
-                <div className="about__stat-label">Technologies</div>
+                <div className="about__stat-label">{t('about.technologies')}</div>
               </div>
             </div>
           </RevealOnScroll>

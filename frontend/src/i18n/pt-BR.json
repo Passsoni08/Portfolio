@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "skills": "Habilidades",
+    "projects": "Projetos",
+    "experience": "Experiência",
+    "education": "Formação",
+    "contact": "Contato",
+    "docs": "Docs"
+  },
+  "hero": {
+    "scroll": "Rolar",
+    "timezone": "BRT",
+    "location": "Santa Rosa de Viterbo, BR"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "fallbackBio": "Desenvolvedor de Software no Brasil, apaixonado por criar experiências digitais elegantes. Combino arquitetura limpa no backend com interfaces polidas e animadas no frontend. Sempre aprendendo, sempre entregando.",
+    "yearsExp": "Anos Exp",
+    "projects": "Projetos",
+    "technologies": "Tecnologias"
+  },
+  "skills": {
+    "title": "Habilidades"
+  },
+  "projects": {
+    "title": "Projetos",
+    "viewProject": "Ver projeto"
+  },
+  "experience": {
+    "title": "Experiência",
+    "present": "Atual"
+  },
+  "education": {
+    "title": "Formação",
+    "present": "Atual"
+  },
+  "contact": {
+    "title": "Vamos Trabalhar Juntos",
+    "subtitle": "Tem um projeto em mente ou quer colaborar? Fique à vontade para entrar em contato. Estou sempre aberto a discutir novas ideias e oportunidades.",
+    "name": "Nome",
+    "email": "Email",
+    "subject": "Assunto",
+    "message": "Mensagem",
+    "send": "Enviar Mensagem",
+    "sending": "Enviando...",
+    "success": "Mensagem enviada com sucesso!",
+    "error": "Algo deu errado. Tente novamente mais tarde.",
+    "phone": "Telefone",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "projectDetail": {
+    "loading": "Carregando...",
+    "notFound": "Projeto não encontrado.",
+    "back": "Voltar ao Portfólio",
+    "viewGithub": "Ver no GitHub",
+    "liveDemo": "Demo ao Vivo"
+  },
+  "footer": {
+    "builtWith": "Feito com Django & React"
+  }
+}

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import type { Project } from '../../types';
 
 interface ProjectCardProps {
@@ -5,11 +7,11 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const { t } = useTranslation();
+
   return (
-    <a
-      href={project.github_url || project.live_url || '#'}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to={`/projects/${project.slug}`}
       className={`project-card ${project.featured ? 'project-card--featured' : ''}`}
     >
       <div className="project-card__bg">
@@ -36,13 +38,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             </span>
           ))}
 
-          {project.github_url && (
-            <span className="project-card__link">
-              GitHub <span aria-hidden="true">&rarr;</span>
-            </span>
-          )}
+          <span className="project-card__link">
+            {t('projects.viewProject')} <span aria-hidden="true">&rarr;</span>
+          </span>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }

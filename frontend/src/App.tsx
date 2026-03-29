@@ -4,6 +4,7 @@ import SmoothScroll from './components/layout/SmoothScroll'
 import HomePage from './pages/HomePage'
 
 const DocsPage = lazy(() => import('./pages/DocsPage'))
+const ProjectPage = lazy(() => import('./pages/ProjectPage'))
 
 function App() {
   const location = useLocation()
@@ -26,6 +27,7 @@ function App() {
         }>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/projects/:slug" element={<ProjectPage />} />
             <Route path="/docs" element={<DocsPage />} />
           </Routes>
         </Suspense>
