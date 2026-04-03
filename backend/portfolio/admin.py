@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Count
 from django.http import HttpRequest
 
 from .models import (
@@ -47,9 +48,16 @@ class SkillCategoryAdmin(admin.ModelAdmin):
     list_filter = ['category_type']
     inlines = [SkillInline]
 
+    def get_queryset(self, request):
+        return (
+            super()
+            .get_queryset(request)
+            .annotate(skill_count_val=Count('skills'))
+        )
+
     @admin.display(description='Skills')
     def skill_count(self, obj: SkillCategory) -> int:
-        return obj.skills.count()
+        return obj.skill_count_val
 
 
 @admin.register(Skill)
@@ -69,6 +77,14 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ['title', 'description']
     prepopulated_fields = {'slug': ('title',)}
     filter_horizontal = ['technologies']
+
+    def get_queryset(self, request):
+        return (
+            super()
+            .get_queryset(request)
+            .prefetch_related('technologies')
+        )
+
     fieldsets = [
         (None, {'fields': ['title', 'slug', 'short_description', 'description']}),
         ('Media', {'fields': ['thumbnail', 'thumbnail_url']}),

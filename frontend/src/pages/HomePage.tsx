@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useApi } from '../hooks/useApi';
+import { useQuery } from '@tanstack/react-query';
 import { fetchPortfolioData } from '../services/api';
 import Navbar from '../components/layout/Navbar';
 import Loader from '../components/sections/Loader';
@@ -14,7 +14,10 @@ import Contact from '../components/sections/Contact';
 import Footer from '../components/layout/Footer';
 
 export default function HomePage() {
-  const { data } = useApi(fetchPortfolioData);
+  const { data } = useQuery({
+    queryKey: ['portfolio'],
+    queryFn: () => fetchPortfolioData().then((r) => r.data),
+  });
   const [loaderDone, setLoaderDone] = useState(false);
 
   const skillCount = data?.skill_categories?.reduce(

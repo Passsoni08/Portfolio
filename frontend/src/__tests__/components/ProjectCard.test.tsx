@@ -10,6 +10,7 @@ const mockProject: Project = {
   description: 'A test project description',
   short_description: 'Short desc',
   thumbnail: null,
+  thumbnail_url: '',
   live_url: '',
   github_url: 'https://github.com/test/project',
   technologies: [
@@ -45,5 +46,16 @@ describe('ProjectCard', () => {
   it('renders first letter as placeholder when no thumbnail', () => {
     render(<ProjectCard project={mockProject} />)
     expect(screen.getByText('T')).toBeInTheDocument()
+  })
+
+  it('renders image from thumbnail_url when thumbnail is null', () => {
+    const project = {
+      ...mockProject,
+      thumbnail: null,
+      thumbnail_url: 'https://example.com/image.png',
+    }
+    render(<ProjectCard project={project} />)
+    const img = screen.getByRole('img')
+    expect(img).toHaveAttribute('src', 'https://example.com/image.png')
   })
 })

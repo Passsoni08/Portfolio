@@ -34,6 +34,7 @@ export interface Project {
   description: string;
   short_description: string;
   thumbnail: string | null;
+  thumbnail_url: string;
   live_url: string;
   github_url: string;
   technologies: Skill[];

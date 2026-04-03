@@ -9,15 +9,17 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const { t } = useTranslation();
 
+  const image = project.thumbnail || project.thumbnail_url;
+
   return (
     <Link
       to={`/projects/${project.slug}`}
       className={`project-card ${project.featured ? 'project-card--featured' : ''}`}
     >
       <div className="project-card__bg">
-        {project.thumbnail ? (
+        {image ? (
           <img
-            src={project.thumbnail}
+            src={image}
             alt={project.title}
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}

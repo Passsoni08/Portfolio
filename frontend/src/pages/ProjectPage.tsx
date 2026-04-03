@@ -1,8 +1,7 @@
-import { useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { useApi } from '../hooks/useApi';
+import { useQuery } from '@tanstack/react-query';
 import { fetchProjectBySlug } from '../services/api';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
@@ -13,10 +12,13 @@ import '../styles/project-detail.css';
 export default function ProjectPage() {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation();
-  const fetcher = useCallback(() => fetchProjectBySlug(slug!), [slug]);
-  const { data: project, loading, error } = useApi(fetcher);
+  const { data: project, isLoading, error } = useQuery({
+    queryKey: ['project', slug],
+    queryFn: () => fetchProjectBySlug(slug!).then((r) => r.data),
+    enabled: !!slug,
+  });
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="project-detail__loading">
         <span>{t('projectDetail.loading')}</span>
@@ -33,6 +35,8 @@ export default function ProjectPage() {
     );
   }
 
+  const image = project.thumbnail || project.thumbnail_url;
+
   return (
     <>
       <Helmet>
@@ -45,13 +49,13 @@ export default function ProjectPage() {
         <meta property="og:description" content={project.short_description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://rafaelpassoni.dev/projects/${project.slug}`} />
-        {project.thumbnail && <meta property="og:image" content={project.thumbnail} />}
+        {image && <meta property="og:image" content={image} />}
 
         {/* Twitter Card */}
-        <meta name="twitter:card" content={project.thumbnail ? 'summary_large_image' : 'summary'} />
+        <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
         <meta name="twitter:title" content={`${project.title} | Rafael Passoni`} />
         <meta name="twitter:description" content={project.short_description} />
-        {project.thumbnail && <meta name="twitter:image" content={project.thumbnail} />}
+        {image && <meta name="twitter:image" content={image} />}
 
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">{JSON.stringify({
@@ -78,9 +82,9 @@ export default function ProjectPage() {
           </Link>
 
           <div className="project-detail__hero">
-            {project.thumbnail ? (
+            {image ? (
               <img
-                src={project.thumbnail}
+                src={image}
                 alt={project.title}
                 className="project-detail__thumbnail"
               />

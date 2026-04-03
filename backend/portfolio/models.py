@@ -24,7 +24,7 @@ class SkillCategory(models.Model):
     CATEGORY_CHOICES = [('hard', 'Hard Skill'), ('soft', 'Soft Skill')]
     name = models.CharField(max_length=50)
     category_type = models.CharField(max_length=4, choices=CATEGORY_CHOICES)
-    order = models.IntegerField(default=0)
+    order = models.IntegerField(default=0, db_index=True)
 
     class Meta:
         ordering = ['order']
@@ -42,7 +42,7 @@ class Skill(models.Model):
     category = models.ForeignKey(
         SkillCategory, on_delete=models.CASCADE, related_name='skills'
     )
-    order = models.IntegerField(default=0)
+    order = models.IntegerField(default=0, db_index=True)
 
     class Meta:
         ordering = ['order']
@@ -61,9 +61,9 @@ class Project(models.Model):
     live_url = models.URLField(blank=True)
     github_url = models.URLField(blank=True)
     technologies = models.ManyToManyField(Skill, blank=True, related_name='projects')
-    featured = models.BooleanField(default=False)
-    order = models.IntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
+    featured = models.BooleanField(default=False, db_index=True)
+    order = models.IntegerField(default=0, db_index=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:
         ordering = ['order', '-created_at']
@@ -77,9 +77,9 @@ class Experience(models.Model):
     company = models.CharField(max_length=200)
     location = models.CharField(max_length=200, blank=True)
     description = models.TextField()
-    start_date = models.DateField()
+    start_date = models.DateField(db_index=True)
     end_date = models.DateField(null=True, blank=True)
-    order = models.IntegerField(default=0)
+    order = models.IntegerField(default=0, db_index=True)
 
     class Meta:
         ordering = ['order', '-start_date']
@@ -92,10 +92,10 @@ class Education(models.Model):
     institution = models.CharField(max_length=200)
     degree = models.CharField(max_length=200)
     field_of_study = models.CharField(max_length=200, blank=True)
-    start_date = models.DateField()
+    start_date = models.DateField(db_index=True)
     end_date = models.DateField(null=True, blank=True)
     description = models.TextField(blank=True)
-    order = models.IntegerField(default=0)
+    order = models.IntegerField(default=0, db_index=True)
 
     class Meta:
         ordering = ['order', '-start_date']
@@ -115,7 +115,7 @@ class Language(models.Model):
     ]
     name = models.CharField(max_length=50)
     level = models.CharField(max_length=15, choices=LEVEL_CHOICES)
-    order = models.IntegerField(default=0)
+    order = models.IntegerField(default=0, db_index=True)
 
     class Meta:
         ordering = ['order']
@@ -129,8 +129,8 @@ class ContactMessage(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=200)
     message = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+    is_read = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         ordering = ['-created_at']

@@ -17,7 +17,7 @@ frontend/.env
 frontend/.env.local
 
 # Node / React
-frontend/node_modules/
+node_modules/
 frontend/dist/
 
 # IDE
@@ -30,7 +30,6 @@ frontend/dist/
 .DS_Store
 Thumbs.db
 
-# Legacy build artifacts
+# Build artifacts
 .next/
 out/
-node_modules/
