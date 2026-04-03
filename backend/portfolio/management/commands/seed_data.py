@@ -113,8 +113,9 @@ class Command(BaseCommand):
                 slug=slugify(proj['name']),
                 defaults={
                     'title': proj['name'],
-                    'description': proj['name'],
-                    'short_description': proj['name'],
+                    'description': proj.get('description', proj['name']),
+                    'short_description': proj.get('short_description', proj['name']),
+                    'thumbnail_url': proj.get('thumbnail_url', ''),
                     'github_url': proj.get('url', ''),
                     'order': i,
                 },

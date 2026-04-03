@@ -43,22 +43,34 @@
     {
       "name": "Minimal API - Fórmula 1",
       "url": "https://github.com/Passsoni08/minimal-api-formula1",
-      "github": true
+      "github": true,
+      "thumbnail_url": "",
+      "short_description": "API REST minimalista para consulta de dados da Fórmula 1.",
+      "description": "API construída com Node.js e Express seguindo princípios de Minimal API. Fornece endpoints para consultar pilotos, equipes e resultados de corridas da Fórmula 1."
     },
     {
       "name": "Podcast Controller",
       "url": "https://github.com/Passsoni08/PodcastController",
-      "github": true
+      "github": true,
+      "thumbnail_url": "",
+      "short_description": "Aplicação para gerenciamento e organização de podcasts.",
+      "description": "Sistema de gerenciamento de podcasts desenvolvido com Node.js. Permite listar, filtrar e organizar episódios de podcasts por categorias."
     },
     {
       "name": "Personal Expense Control",
       "url": "https://github.com/Passsoni08/ControleDespesas",
-      "github": true
+      "github": true,
+      "thumbnail_url": "",
+      "short_description": "Sistema de controle de despesas pessoais.",
+      "description": "Aplicação fullstack para controle de despesas pessoais. Permite cadastrar, categorizar e visualizar gastos com relatórios e filtros por período."
     },
     {
       "name": "Agenda-SaaS",
       "url": "https://github.com/Passsoni08/agenda-saas",
-      "github": true
+      "github": true,
+      "thumbnail_url": "",
+      "short_description": "Plataforma SaaS de agendamento online.",
+      "description": "Plataforma SaaS para agendamento de compromissos. Construída com Next.js e integração com banco de dados, permite que usuários criem e gerenciem agendas online."
     }
   ],
   "professionalExperience": [
