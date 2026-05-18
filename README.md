@@ -10,9 +10,12 @@ Full-stack portfolio website built with Django REST Framework and React.
 | **Frontend**   | React 19, TypeScript, Vite, GSAP, React Query, i18next                       |
 | **Infra**      | Docker, Gunicorn, Nginx, GitHub Actions CI/CD                                |
 
-## Quick Start
+## Prerequisites
 
-Prerequisites: [Docker](https://www.docker.com/) and Docker Compose.
+- [Docker](https://www.docker.com/) and Docker Compose (recommended path)
+- Or, for running natively without Docker: Python 3.11+ and Node.js 20+
+
+## Quick Start
 
 ```bash
 git clone https://github.com/Passsoni08/Portfolio.git
@@ -72,7 +75,11 @@ Portfolio/
 
 ## Development
 
+Environment variables are documented in [backend/.env.example](backend/.env.example) and [frontend/.env.example](frontend/.env.example). Both services run with sensible defaults, so copying these files is optional for local development.
+
 **Backend (without Docker):**
+
+Uses SQLite by default — no Postgres required for local development. The database is created automatically on the first `migrate`.
 
 ```bash
 cd backend
@@ -81,6 +88,7 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py seed_data
+python manage.py createsuperuser  # optional, required to log in at /admin
 python manage.py runserver
 ```
 
