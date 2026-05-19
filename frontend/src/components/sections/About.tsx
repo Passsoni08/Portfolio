@@ -4,18 +4,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import SplitText from '../ui/SplitText';
 import RevealOnScroll from '../ui/RevealOnScroll';
+import { localize } from '../../lib/localize';
+import type { Localized } from '../../types';
 import '../../styles/about.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface AboutProps {
-  bio?: string;
+  bio?: Localized;
   projectCount: number;
   skillCount: number;
 }
 
 export default function About({ bio, projectCount, skillCount }: AboutProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const bioStr = localize(bio, i18n.language);
   const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -55,7 +58,7 @@ export default function About({ bio, projectCount, skillCount }: AboutProps) {
         <RevealOnScroll clipPath>
           <div className="about__image">
             <img
-              src="/profile-photo.jpg"
+              src="/profile-photo.png"
               alt="Rafael Passoni"
               loading="lazy"
               className="about__photo"
@@ -70,7 +73,7 @@ export default function About({ bio, projectCount, skillCount }: AboutProps) {
 
           <RevealOnScroll delay={0.2}>
             <p className="about__bio">
-              {bio || t('about.fallbackBio')}
+              {bioStr || t('about.fallbackBio')}
             </p>
           </RevealOnScroll>
 

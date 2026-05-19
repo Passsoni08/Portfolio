@@ -1,8 +1,10 @@
+export type Localized<T = string> = T | { en: T; 'pt-BR': T };
+
 export interface Profile {
   id: number;
   name: string;
-  job_title: string;
-  bio: string;
+  job_title: Localized;
+  bio: Localized;
   photo: string | null;
   phone: string;
   email: string;
@@ -14,7 +16,7 @@ export interface Profile {
 
 export interface Skill {
   id: number;
-  name: string;
+  name: Localized;
   icon: string | null;
   icon_url: string;
   proficiency: number;
@@ -22,17 +24,17 @@ export interface Skill {
 
 export interface SkillCategory {
   id: number;
-  name: string;
+  name: Localized;
   category_type: 'hard' | 'soft';
   skills: Skill[];
 }
 
 export interface Project {
   id: number;
-  title: string;
+  title: Localized;
   slug: string;
-  description: string;
-  short_description: string;
+  description: Localized;
+  short_description: Localized;
   thumbnail: string | null;
   thumbnail_url: string;
   live_url: string;
@@ -45,10 +47,10 @@ export interface Project {
 
 export interface Experience {
   id: number;
-  title: string;
+  title: Localized;
   company: string;
   location: string;
-  description: string;
+  description: Localized;
   start_date: string;
   end_date: string | null;
   order: number;
@@ -57,11 +59,11 @@ export interface Experience {
 export interface Education {
   id: number;
   institution: string;
-  degree: string;
-  field_of_study: string;
+  degree: Localized;
+  field_of_study: Localized;
   start_date: string;
   end_date: string | null;
-  description: string;
+  description: Localized;
   order: number;
 }
 

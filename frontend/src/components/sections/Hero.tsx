@@ -2,16 +2,19 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useTranslation } from 'react-i18next';
 import SplitText from '../ui/SplitText';
+import { localize } from '../../lib/localize';
+import type { Localized } from '../../types';
 import '../../styles/hero.css';
 
 interface HeroProps {
   name?: string;
-  jobTitle?: string;
+  jobTitle?: Localized;
   visible: boolean;
 }
 
 export default function Hero({ name = 'Rafael Passoni', jobTitle = 'Software Developer', visible }: HeroProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const jobTitleStr = localize(jobTitle, i18n.language) || 'Software Developer';
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const timeRef = useRef<HTMLSpanElement>(null);
 
@@ -74,7 +77,7 @@ export default function Hero({ name = 'Rafael Passoni', jobTitle = 'Software Dev
                 trigger={false}
                 delay={0.8}
               >
-                {jobTitle}
+                {jobTitleStr}
               </SplitText>
             </div>
           </>

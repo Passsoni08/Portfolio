@@ -7,11 +7,13 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import RevealOnScroll from '../components/ui/RevealOnScroll';
 import SplitText from '../components/ui/SplitText';
+import { localize } from '../lib/localize';
 import '../styles/project-detail.css';
 
 export default function ProjectPage() {
   const { slug } = useParams<{ slug: string }>();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
   const { data: project, isLoading, error } = useQuery({
     queryKey: ['project', slug],
     queryFn: () => fetchProjectBySlug(slug!).then((r) => r.data),
@@ -36,40 +38,43 @@ export default function ProjectPage() {
   }
 
   const image = project.thumbnail || project.thumbnail_url;
+  const title = localize(project.title, lang);
+  const shortDescription = localize(project.short_description, lang);
+  const description = localize(project.description, lang);
 
   return (
     <>
       <Helmet>
-        <title>{project.title} | Rafael Passoni</title>
-        <meta name="description" content={project.short_description} />
+        <title>{title} | Rafael Passoni</title>
+        <meta name="description" content={shortDescription} />
         <link rel="canonical" href={`https://rafaelpassoni.dev/projects/${project.slug}`} />
 
         {/* Open Graph */}
-        <meta property="og:title" content={`${project.title} | Rafael Passoni`} />
-        <meta property="og:description" content={project.short_description} />
+        <meta property="og:title" content={`${title} | Rafael Passoni`} />
+        <meta property="og:description" content={shortDescription} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://rafaelpassoni.dev/projects/${project.slug}`} />
         {image && <meta property="og:image" content={image} />}
 
         {/* Twitter Card */}
         <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
-        <meta name="twitter:title" content={`${project.title} | Rafael Passoni`} />
-        <meta name="twitter:description" content={project.short_description} />
+        <meta name="twitter:title" content={`${title} | Rafael Passoni`} />
+        <meta name="twitter:description" content={shortDescription} />
         {image && <meta name="twitter:image" content={image} />}
 
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'SoftwareSourceCode',
-          name: project.title,
-          description: project.short_description,
+          name: title,
+          description: shortDescription,
           url: `https://rafaelpassoni.dev/projects/${project.slug}`,
           ...(project.github_url && { codeRepository: project.github_url }),
           author: {
             '@type': 'Person',
             name: 'Rafael V Passoni',
           },
-          programmingLanguage: project.technologies.map((t) => t.name),
+          programmingLanguage: project.technologies.map((tech) => localize(tech.name, lang)),
         })}</script>
       </Helmet>
 
@@ -85,19 +90,19 @@ export default function ProjectPage() {
             {image ? (
               <img
                 src={image}
-                alt={project.title}
+                alt={title}
                 className="project-detail__thumbnail"
               />
             ) : (
               <div className="project-detail__thumbnail-fallback">
-                {project.title.charAt(0)}
+                {title.charAt(0)}
               </div>
             )}
           </div>
 
           <RevealOnScroll y={30}>
             <SplitText as="h1" type="words" className="project-detail__title">
-              {project.title}
+              {title}
             </SplitText>
           </RevealOnScroll>
 
@@ -113,7 +118,7 @@ export default function ProjectPage() {
                         className="project-detail__tech-icon"
                       />
                     )}
-                    {tech.name}
+                    {localize(tech.name, lang)}
                   </span>
                 ))}
               </div>
@@ -122,7 +127,7 @@ export default function ProjectPage() {
 
           <RevealOnScroll y={20} delay={0.2}>
             <div className="project-detail__description">
-              {project.description.split('\n').map((paragraph, i) => (
+              {description.split('\n').map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
             </div>

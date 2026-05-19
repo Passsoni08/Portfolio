@@ -64,6 +64,12 @@
   flex-shrink: 0;
 }
 
+.skills__icon--mask {
+  background-color: var(--color-text);
+  -webkit-mask: var(--icon-url) center / contain no-repeat;
+  mask: var(--icon-url) center / contain no-repeat;
+}
+
 .skills__name {
   font-family: var(--font-display);
   font-size: var(--text-body);

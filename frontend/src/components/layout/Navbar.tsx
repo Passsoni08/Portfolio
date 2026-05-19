@@ -133,7 +133,19 @@ export default function Navbar() {
         </div>
       </header>
 
-      <div id="nav-overlay" className={`navbar__overlay ${isOpen ? 'navbar__overlay--open' : ''}`} role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <div
+        className={`navbar__backdrop ${isOpen ? 'navbar__backdrop--open' : ''}`}
+        onClick={() => setIsOpen(false)}
+        aria-hidden="true"
+      />
+
+      <aside
+        id="nav-overlay"
+        className={`navbar__drawer ${isOpen ? 'navbar__drawer--open' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+      >
         <nav>
           <ul className="navbar__nav">
             {navItems.map((item) => (
@@ -149,11 +161,11 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <div className="navbar__overlay-footer">
+        <div className="navbar__drawer-footer">
           <span>Rafael Passoni</span>
           <a href="mailto:passonirafael08@gmail.com">passonirafael08@gmail.com</a>
         </div>
-      </div>
+      </aside>
     </>
   );
 }

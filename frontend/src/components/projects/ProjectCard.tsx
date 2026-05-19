@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { localize } from '../../lib/localize';
 import type { Project } from '../../types';
 
 interface ProjectCardProps {
@@ -7,7 +8,10 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+  const title = localize(project.title, lang);
+  const shortDescription = localize(project.short_description, lang);
 
   const image = project.thumbnail || project.thumbnail_url;
 
@@ -20,23 +24,23 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {image ? (
           <img
             src={image}
-            alt={project.title}
+            alt={title}
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         ) : (
-          <div className="project-card__bg-label">{project.title.charAt(0)}</div>
+          <div className="project-card__bg-label">{title.charAt(0)}</div>
         )}
       </div>
 
       <div className="project-card__content">
-        <h3 className="project-card__title">{project.title}</h3>
-        <p className="project-card__description">{project.short_description}</p>
+        <h3 className="project-card__title">{title}</h3>
+        <p className="project-card__description">{shortDescription}</p>
 
         <div className="project-card__footer">
           {project.technologies.slice(0, 3).map((tech) => (
             <span key={tech.id} className="project-card__tech">
-              {tech.name}
+              {localize(tech.name, lang)}
             </span>
           ))}
 

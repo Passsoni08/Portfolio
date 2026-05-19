@@ -1,4 +1,5 @@
 import { Highlight, themes } from 'prism-react-renderer';
+import { useTheme } from '../../contexts/ThemeContext';
 
 interface CodeBlockProps {
   code: string;
@@ -6,8 +7,10 @@ interface CodeBlockProps {
 }
 
 export default function CodeBlock({ code, language = 'typescript' }: CodeBlockProps) {
+  const { theme } = useTheme();
+  const prismTheme = theme === 'dark' ? themes.nightOwl : themes.nightOwlLight;
   return (
-    <Highlight theme={themes.nightOwl} code={code.trim()} language={language}>
+    <Highlight theme={prismTheme} code={code.trim()} language={language}>
       {({ style, tokens, getLineProps, getTokenProps }) => (
         <pre
           className="docs__code"

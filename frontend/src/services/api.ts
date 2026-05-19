@@ -11,9 +11,6 @@ const client = axios.create({
 export const fetchPortfolioData = () =>
   client.get<PortfolioData>('/portfolio/');
 
-export const fetchProjects = () =>
-  client.get<Project[]>('/projects/');
-
 export const fetchProjectBySlug = (slug: string) =>
   client.get<Project>(`/projects/${slug}/`);
 

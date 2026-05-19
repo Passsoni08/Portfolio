@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import SplitText from '../ui/SplitText';
 import RevealOnScroll from '../ui/RevealOnScroll';
 import { useMousePosition } from '../../hooks/useMousePosition';
+import { localize } from '../../lib/localize';
 import type { SkillCategory } from '../../types';
 import '../../styles/skills.css';
 
@@ -15,7 +16,8 @@ interface SkillsProps {
 }
 
 export default function Skills({ categories }: SkillsProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
   const mouse = useMousePosition();
   const skillNamesRef = useRef<Map<number, HTMLSpanElement>>(new Map());
   const barsRef = useRef<HTMLDivElement>(null);
@@ -73,42 +75,54 @@ export default function Skills({ categories }: SkillsProps) {
         {categories.map((cat, catIdx) => (
           <RevealOnScroll key={cat.id} delay={catIdx * 0.1} clipPath>
             <div className="skills__card">
-              <div className="skills__card-title">{cat.name}</div>
+              <div className="skills__card-title">{localize(cat.name, lang)}</div>
 
               {cat.category_type === 'hard' ? (
                 <div className="skills__list">
-                  {cat.skills.map((skill) => (
-                    <div key={skill.id} className="skills__item">
-                      {skill.icon_url && (
-                        <img
-                          src={skill.icon_url}
-                          alt={skill.name}
-                          className="skills__icon"
-                          loading="lazy"
-                        />
-                      )}
-                      <span
-                        className="skills__name"
-                        ref={(el) => {
-                          if (el) skillNamesRef.current.set(skill.id, el);
-                        }}
-                      >
-                        {skill.name}
-                      </span>
-                      <div className="skills__bar-container">
-                        <div
-                          className="skills__bar"
-                          data-width={skill.proficiency}
-                        />
+                  {cat.skills.map((skill) => {
+                    const skillName = localize(skill.name, lang);
+                    return (
+                      <div key={skill.id} className="skills__item">
+                        {skill.icon_url && (
+                          skill.icon_url.startsWith('/') && skill.icon_url.endsWith('.svg') ? (
+                            <span
+                              className="skills__icon skills__icon--mask"
+                              style={{ ['--icon-url' as string]: `url(${skill.icon_url})` } as React.CSSProperties}
+                              role="img"
+                              aria-label={skillName}
+                            />
+                          ) : (
+                            <img
+                              src={skill.icon_url}
+                              alt={skillName}
+                              className="skills__icon"
+                              loading="lazy"
+                            />
+                          )
+                        )}
+                        <span
+                          className="skills__name"
+                          ref={(el) => {
+                            if (el) skillNamesRef.current.set(skill.id, el);
+                          }}
+                        >
+                          {skillName}
+                        </span>
+                        <div className="skills__bar-container">
+                          <div
+                            className="skills__bar"
+                            data-width={skill.proficiency}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               ) : (
                 <div className="skills__tags">
                   {cat.skills.map((skill) => (
                     <span key={skill.id} className="skills__tag">
-                      {skill.name}
+                      {localize(skill.name, lang)}
                     </span>
                   ))}
                 </div>

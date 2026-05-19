@@ -5,6 +5,7 @@ from django.core.management.base import BaseCommand
 from django.utils.text import slugify
 
 from portfolio.models import (
+    Education,
     Experience,
     Language,
     Profile,
@@ -12,6 +13,12 @@ from portfolio.models import (
     Skill,
     SkillCategory,
 )
+
+
+def _en(value):
+    if isinstance(value, dict):
+        return value.get('en', '') or value.get('pt-BR', '') or ''
+    return value or ''
 
 
 class Command(BaseCommand):
@@ -33,6 +40,7 @@ class Command(BaseCommand):
             defaults={
                 'name': data['name'],
                 'job_title': data['job'],
+                'bio': data.get('bio', {}),
                 'phone': data.get('phone', ''),
                 'location': data.get('location', ''),
                 'github_url': data.get('github_url', ''),
@@ -46,13 +54,13 @@ class Command(BaseCommand):
         Skill.objects.filter(category__category_type='hard').delete()
         SkillCategory.objects.filter(category_type='hard').delete()
 
-        # Hard Skills — 4 categories
+        # Hard Skills — 4 categories with translatable names
         skills_data = data.get('skills', {})
         hard_categories = [
-            ('Backend', 'backend', 0),
-            ('Frontend', 'frontend', 1),
-            ('Workspace', 'workspace', 2),
-            ('AI Tools', 'aiTools', 3),
+            ({'en': 'Backend', 'pt-BR': 'Backend'}, 'backend', 0),
+            ({'en': 'Frontend', 'pt-BR': 'Frontend'}, 'frontend', 1),
+            ({'en': 'Workspace', 'pt-BR': 'Ambiente'}, 'workspace', 2),
+            ({'en': 'AI Tools', 'pt-BR': 'Ferramentas IA'}, 'aiTools', 3),
         ]
 
         total_hard = 0
@@ -79,13 +87,13 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.SUCCESS(f'Seeded {total_hard} hard skills in 4 categories'))
 
-        # Soft Skills
-        soft_cat, _ = SkillCategory.objects.update_or_create(
-            name='Soft Skills',
-            defaults={'category_type': 'soft', 'order': 4},
+        # Soft Skills — clear all and recreate (avoids JSONField lookup duplicates)
+        SkillCategory.objects.filter(category_type='soft').delete()
+        soft_cat = SkillCategory.objects.create(
+            name={'en': 'Soft Skills', 'pt-BR': 'Soft Skills'},
+            category_type='soft',
+            order=4,
         )
-        # Clear old soft skills and re-create
-        Skill.objects.filter(category=soft_cat).delete()
         for i, skill_name in enumerate(skills_data.get('softSkills', [])):
             Skill.objects.create(
                 name=skill_name,
@@ -107,22 +115,21 @@ class Command(BaseCommand):
             )
         self.stdout.write(self.style.SUCCESS(f'Seeded {len(data["languages"])} languages'))
 
-        # Projects
+        # Projects — clear all and recreate (slug derived from English title)
+        Project.objects.all().delete()
         for i, proj in enumerate(data.get('portfolio', [])):
-            Project.objects.update_or_create(
-                slug=slugify(proj['name']),
-                defaults={
-                    'title': proj['name'],
-                    'description': proj.get('description', proj['name']),
-                    'short_description': proj.get('short_description', proj['name']),
-                    'thumbnail_url': proj.get('thumbnail_url', ''),
-                    'github_url': proj.get('url', ''),
-                    'order': i,
-                },
+            Project.objects.create(
+                slug=slugify(_en(proj['name'])),
+                title=proj['name'],
+                description=proj.get('description', proj['name']),
+                short_description=proj.get('short_description', proj['name']),
+                thumbnail_url=proj.get('thumbnail_url', ''),
+                github_url=proj.get('url', ''),
+                order=i,
             )
         self.stdout.write(self.style.SUCCESS(f'Seeded {len(data["portfolio"])} projects'))
 
-        # Experience — clear old and recreate
+        # Experience — clear all and recreate
         Experience.objects.all().delete()
         for i, exp in enumerate(data.get('professionalExperience', [])):
             period = exp.get('period', '').split('-')
@@ -133,16 +140,36 @@ class Command(BaseCommand):
             start_date = f'{start_parts[1]}-{start_parts[0]}-01'
             end_date = f'{end_parts[1]}-{end_parts[0]}-01' if end_parts and len(end_parts) == 2 else None
 
-            Experience.objects.update_or_create(
+            Experience.objects.create(
                 title=exp['name'],
-                defaults={
-                    'company': 'Intercolegial',
-                    'description': exp.get('description', ''),
-                    'start_date': start_date,
-                    'end_date': end_date,
-                    'order': i,
-                },
+                company=exp.get('company', ''),
+                description=exp.get('description', ''),
+                start_date=start_date,
+                end_date=end_date,
+                order=i,
             )
         self.stdout.write(self.style.SUCCESS(f'Seeded {len(data["professionalExperience"])} experiences'))
+
+        # Education — clear all and recreate
+        Education.objects.all().delete()
+        for i, edu in enumerate(data.get('education', [])):
+            period = edu.get('period', '').split('-')
+            start_parts = period[0].strip().split('/') if period else ['01', '2024']
+            end_raw = period[1].strip() if len(period) > 1 else None
+            end_parts = end_raw.split('/') if end_raw and end_raw.lower() != 'present' else None
+
+            start_date = f'{start_parts[1]}-{start_parts[0]}-01'
+            end_date = f'{end_parts[1]}-{end_parts[0]}-01' if end_parts and len(end_parts) == 2 else None
+
+            Education.objects.create(
+                institution=edu.get('institution', ''),
+                degree=edu.get('degree', ''),
+                field_of_study=edu.get('field_of_study', ''),
+                description=edu.get('description', ''),
+                start_date=start_date,
+                end_date=end_date,
+                order=i,
+            )
+        self.stdout.write(self.style.SUCCESS(f'Seeded {len(data.get("education", []))} education entries'))
 
         self.stdout.write(self.style.SUCCESS('Database seeded successfully!'))

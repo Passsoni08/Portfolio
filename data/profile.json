@@ -1,7 +1,13 @@
 {
   "name": "Rafael V Passoni",
-  "photo": "assets/img/my-photo.jpeg",
-  "job": "Software Developer",
+  "job": {
+    "en": "Software Developer",
+    "pt-BR": "Desenvolvedor de Software"
+  },
+  "bio": {
+    "en": "Software developer based in Brazil, building polished fullstack applications with React, Next.js, and Django, with a strong focus on clean architecture and animated, accessible interfaces.",
+    "pt-BR": "Desenvolvedor de software no Brasil, construindo aplicações fullstack polidas com React, Next.js e Django, com foco em arquitetura limpa e interfaces animadas e acessíveis."
+  },
   "phone": "+55 (16) 99282-6962",
   "email": "passonirafael08@gmail.com",
   "location": "Santa Rosa de Viterbo - SP, Brasil",
@@ -9,85 +15,170 @@
   "linkedin_url": "https://www.linkedin.com/in/passonirafael/",
   "skills": {
     "backend": [
-      { "name": "Node.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", "proficiency": 80 },
-      { "name": "JavaScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", "proficiency": 80 },
-      { "name": "Django", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg", "proficiency": 80 },
-      { "name": "DRF", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/djangorest/djangorest-original.svg", "proficiency": 80 },
-      { "name": "Docker", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", "proficiency": 80 }
+      { "name": "Node.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", "proficiency": 100 },
+      { "name": "JavaScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", "proficiency": 100 },
+      { "name": "Django", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg", "proficiency": 100 },
+      { "name": "DRF", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/djangorest/djangorest-original.svg", "proficiency": 100 },
+      { "name": "Docker", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", "proficiency": 100 }
     ],
     "frontend": [
-      { "name": "TypeScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", "proficiency": 80 },
-      { "name": "React", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", "proficiency": 80 },
-      { "name": "Next.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", "proficiency": 80 },
-      { "name": "Tailwind CSS", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg", "proficiency": 80 },
-      { "name": "shadcn/ui", "icon": "/icons/shadcn.svg", "proficiency": 80 }
+      { "name": "TypeScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", "proficiency": 100 },
+      { "name": "React", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", "proficiency": 100 },
+      { "name": "Next.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", "proficiency": 100 },
+      { "name": "Tailwind CSS", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg", "proficiency": 100 },
+      { "name": "shadcn/ui", "icon": "/icons/shadcn.svg", "proficiency": 100 }
     ],
     "aiTools": [
-      { "name": "Claude Code", "icon": "/icons/claude.svg", "proficiency": 80 },
-      { "name": "Codex", "icon": "/icons/openai.svg", "proficiency": 80 }
+      { "name": "Claude Code", "icon": "/icons/claude.svg", "proficiency": 100 },
+      { "name": "Codex", "icon": "/icons/openai.svg", "proficiency": 100 }
     ],
     "workspace": [
-      { "name": "VS Code", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg", "proficiency": 80 }
+      { "name": "VS Code", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg", "proficiency": 100 }
     ],
     "softSkills": [
-      "Teamwork",
-      "Leadership",
-      "Fast Learner",
-      "Adaptability",
-      "Communication",
-      "Creative"
+      { "en": "Teamwork", "pt-BR": "Trabalho em Equipe" },
+      { "en": "Leadership", "pt-BR": "Liderança" },
+      { "en": "Fast Learner", "pt-BR": "Aprendizado Rápido" },
+      { "en": "Adaptability", "pt-BR": "Adaptabilidade" },
+      { "en": "Communication", "pt-BR": "Comunicação" },
+      { "en": "Creative", "pt-BR": "Criatividade" }
     ]
   },
   "languages": ["Portuguese", "English", "Spanish"],
   "portfolio": [
     {
-      "name": "Minimal API - Fórmula 1",
+      "name": { "en": "Minimal API - Fórmula 1", "pt-BR": "Minimal API - Fórmula 1" },
       "url": "https://github.com/Passsoni08/minimal-api-formula1",
-      "github": true,
-      "thumbnail_url": "",
-      "short_description": "API REST minimalista para consulta de dados da Fórmula 1.",
-      "description": "API construída com Node.js e Express seguindo princípios de Minimal API. Fornece endpoints para consultar pilotos, equipes e resultados de corridas da Fórmula 1."
+      "thumbnail_url": "/thumbnails/formula1.jpg",
+      "short_description": {
+        "en": "Minimalist REST API for Formula 1 data queries.",
+        "pt-BR": "API REST minimalista para consulta de dados da Fórmula 1."
+      },
+      "description": {
+        "en": "REST API built with Node.js and Express following Minimal API principles. Exposes endpoints to query drivers, teams, and race results from Formula 1.",
+        "pt-BR": "API construída com Node.js e Express seguindo princípios de Minimal API. Fornece endpoints para consultar pilotos, equipes e resultados de corridas da Fórmula 1."
+      }
     },
     {
-      "name": "Podcast Controller",
+      "name": { "en": "Podcast Controller", "pt-BR": "Podcast Controller" },
       "url": "https://github.com/Passsoni08/PodcastController",
-      "github": true,
-      "thumbnail_url": "",
-      "short_description": "Aplicação para gerenciamento e organização de podcasts.",
-      "description": "Sistema de gerenciamento de podcasts desenvolvido com Node.js. Permite listar, filtrar e organizar episódios de podcasts por categorias."
+      "thumbnail_url": "/thumbnails/podcast-controller.jpg",
+      "short_description": {
+        "en": "Application for managing and organizing podcasts.",
+        "pt-BR": "Aplicação para gerenciamento e organização de podcasts."
+      },
+      "description": {
+        "en": "Podcast management system built with Node.js. Lets users list, filter, and organize podcast episodes by category.",
+        "pt-BR": "Sistema de gerenciamento de podcasts desenvolvido com Node.js. Permite listar, filtrar e organizar episódios de podcasts por categorias."
+      }
     },
     {
-      "name": "Personal Expense Control",
+      "name": { "en": "Personal Expense Control", "pt-BR": "Controle de Despesas Pessoais" },
       "url": "https://github.com/Passsoni08/ControleDespesas",
-      "github": true,
-      "thumbnail_url": "",
-      "short_description": "Sistema de controle de despesas pessoais.",
-      "description": "Aplicação fullstack para controle de despesas pessoais. Permite cadastrar, categorizar e visualizar gastos com relatórios e filtros por período."
+      "thumbnail_url": "/thumbnails/expense-tracker.jpg",
+      "short_description": {
+        "en": "Personal expense tracking system.",
+        "pt-BR": "Sistema de controle de despesas pessoais."
+      },
+      "description": {
+        "en": "Fullstack application for personal expense tracking. Lets users register, categorize, and visualize spending with reports and time-based filters.",
+        "pt-BR": "Aplicação fullstack para controle de despesas pessoais. Permite cadastrar, categorizar e visualizar gastos com relatórios e filtros por período."
+      }
     },
     {
-      "name": "Agenda-SaaS",
+      "name": { "en": "Pokedex", "pt-BR": "Pokédex" },
+      "url": "https://github.com/Passsoni08/Pokedex",
+      "thumbnail_url": "/thumbnails/pokedex.jpg",
+      "short_description": {
+        "en": "Pokédex web app with Pokémon listing and search.",
+        "pt-BR": "Pokédex web app com lista e busca de Pokémon."
+      },
+      "description": {
+        "en": "Pokédex application that consumes PokéAPI to list, filter, and display Pokémon details (types, stats, and evolutions).",
+        "pt-BR": "Aplicação Pokédex que consome a PokéAPI para listar, filtrar e exibir detalhes dos Pokémon (tipos, estatísticas e evoluções)."
+      }
+    },
+    {
+      "name": { "en": "Agenda-SaaS", "pt-BR": "Agenda-SaaS" },
       "url": "https://github.com/Passsoni08/agenda-saas",
-      "github": true,
-      "thumbnail_url": "",
-      "short_description": "Plataforma SaaS de agendamento online.",
-      "description": "Plataforma SaaS para agendamento de compromissos. Construída com Next.js e integração com banco de dados, permite que usuários criem e gerenciem agendas online."
+      "thumbnail_url": "/thumbnails/agenda-saas.jpg",
+      "short_description": {
+        "en": "Online scheduling SaaS platform.",
+        "pt-BR": "Plataforma SaaS de agendamento online."
+      },
+      "description": {
+        "en": "SaaS platform for appointment scheduling. Built with Next.js and database integration, lets users create and manage online schedules.",
+        "pt-BR": "Plataforma SaaS para agendamento de compromissos. Construída com Next.js e integração com banco de dados, permite que usuários criem e gerenciem agendas online."
+      }
+    },
+    {
+      "name": { "en": "Spotify", "pt-BR": "Spotify" },
+      "url": "https://github.com/Passsoni08/CloneSpotify",
+      "thumbnail_url": "/thumbnails/spotify-clone.jpg",
+      "short_description": {
+        "en": "Front-end clone of Spotify with music player.",
+        "pt-BR": "Clone front-end do Spotify com player de música."
+      },
+      "description": {
+        "en": "Spotify interface clone with music player, playlist navigation, personal library, and search, replicating the original app's UX.",
+        "pt-BR": "Clone da interface do Spotify com player de música, navegação por playlists, biblioteca pessoal e busca, replicando a UX do app original."
+      }
+    }
+  ],
+  "education": [
+    {
+      "institution": "IBMR - Centro Universitário",
+      "degree": {
+        "en": "Systems Analysis and Development",
+        "pt-BR": "Análise e Desenvolvimento de Sistemas"
+      },
+      "field_of_study": {
+        "en": "Web and Software Solutions Development",
+        "pt-BR": "Desenvolvimento de Soluções Web e Softwares"
+      },
+      "period": "09/2023-12/2025",
+      "description": {
+        "en": "Covers software engineering, requirements gathering, understanding client needs, system documentation, and the practical application of analysis—creating and implementing code (programming) to make software work correctly.",
+        "pt-BR": "Envolve a engenharia de software, levantamento de requisitos, entendimento das necessidades do cliente e documentação do sistema, e também a aplicação prática da análise, criando e implementando o código (programação) para que o software funcione corretamente."
+      }
     }
   ],
   "professionalExperience": [
     {
-      "name": "Manager of Events",
+      "name": {
+        "en": "Manager of Events",
+        "pt-BR": "Coordenador de Eventos"
+      },
+      "company": "Intercolegial",
       "period": "01/2024-01/2025",
-      "description": "Responsible for communicating with over 100 representatives from participating schools, creating and sharing game schedules, organizing and conducting technical meetings, maintaining direct communication with event sponsors, and carrying out technical inspections at game and party venues."
+      "description": {
+        "en": "Responsible for communicating with over 100 representatives from participating schools, creating and sharing game schedules, organizing and conducting technical meetings, maintaining direct communication with event sponsors, and carrying out technical inspections at game and party venues.",
+        "pt-BR": "Responsável pela comunicação com mais de 100 representantes de escolas participantes, criando e compartilhando calendários de jogos, organizando e conduzindo reuniões técnicas, mantendo contato direto com patrocinadores do evento e realizando vistorias técnicas nos locais de jogos e festas."
+      }
     },
     {
-      "name": "Intern Web Developer",
+      "name": {
+        "en": "Intern Web Developer",
+        "pt-BR": "Desenvolvedor Web Estagiário"
+      },
+      "company": "Chiaperini",
       "period": "10/2025-12/2025",
-      "description": "web developer with hands-on experience building fullstack applications using modern technologies. I worked with frameworks like React and Next.js on the frontend, and Node.js and Django REST Framework on the backend, focusing on scalability, clean architecture, and performance"
+      "description": {
+        "en": "Web developer with hands-on experience building fullstack applications using modern technologies. I worked with frameworks like React and Next.js on the frontend, and Node.js and Django REST Framework on the backend, focusing on scalability, clean architecture, and performance.",
+        "pt-BR": "Desenvolvedor web com experiência prática construindo aplicações fullstack com tecnologias modernas. Trabalhei com frameworks como React e Next.js no frontend, e Node.js e Django REST Framework no backend, com foco em escalabilidade, arquitetura limpa e performance."
+      }
     },
     {
-      "name": "Junior Web Developer",
-      "period": "01/2026 - Present",
-      "description": "I work as a Junior Web Developer, building and maintaining web applications using modern technologies. I contribute to both frontend and backend development, working with tools such as React and Next.js, as well as Node.js and Django REST Framework. In my role, I support the implementation of RESTful APIs, authentication with JWT, and automated tests. I collaborate with team members to deliver features on time, fix bugs, and improve application performance. This experience helps me strengthen my understanding of clean code practices, version control, and CI/CD pipelines, while continuously improving my problem-solving skills and attention to detail."
+      "name": {
+        "en": "Junior Web Developer",
+        "pt-BR": "Desenvolvedor Web Júnior"
+      },
+      "company": "Chiaperini",
+      "period": "01/2026-Present",
+      "description": {
+        "en": "I work as a Junior Web Developer, building and maintaining web applications using modern technologies. I contribute to both frontend and backend development, working with tools such as React and Next.js, as well as Node.js and Django REST Framework. In my role, I support the implementation of RESTful APIs, authentication with JWT, and automated tests. I collaborate with team members to deliver features on time, fix bugs, and improve application performance.",
+        "pt-BR": "Atuo como Desenvolvedor Web Júnior, construindo e mantendo aplicações web com tecnologias modernas. Contribuo tanto no frontend quanto no backend, trabalhando com ferramentas como React e Next.js, além de Node.js e Django REST Framework. No meu papel, apoio a implementação de APIs RESTful, autenticação com JWT e testes automatizados. Colaboro com a equipe para entregar funcionalidades no prazo, corrigir bugs e melhorar a performance da aplicação."
+      }
     }
   ]
 }
