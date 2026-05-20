@@ -8,14 +8,14 @@ import '../../styles/contact.css';
 
 interface ContactProps {
   email?: string;
-  phone?: string;
+  whatsappUrl?: string;
   githubUrl?: string;
   linkedinUrl?: string;
 }
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
-export default function Contact({ email, phone, githubUrl, linkedinUrl }: ContactProps) {
+export default function Contact({ email, whatsappUrl, githubUrl, linkedinUrl }: ContactProps) {
   const { t } = useTranslation();
   const [status, setStatus] = useState<Status>('idle');
 
@@ -64,9 +64,9 @@ export default function Contact({ email, phone, githubUrl, linkedinUrl }: Contac
                   {t('contact.email')}
                 </MagneticButton>
               )}
-              {phone && (
-                <MagneticButton className="contact__link-btn" onClick={() => window.open(`tel:${phone}`)}>
-                  {t('contact.phone')}
+              {whatsappUrl && (
+                <MagneticButton className="contact__link-btn" onClick={() => window.open(whatsappUrl, '_blank', 'noopener,noreferrer')}>
+                  {t('contact.whatsapp')}
                 </MagneticButton>
               )}
               {githubUrl && (

@@ -12,7 +12,7 @@ class Profile(models.Model):
     job_title = models.JSONField(default=dict)
     bio = models.JSONField(blank=True, default=dict)
     photo = models.ImageField(upload_to='profile/', blank=True)
-    phone = models.CharField(max_length=30, blank=True)
+    whatsapp_url = models.URLField(max_length=200, blank=True)
     email = models.EmailField()
     location = models.CharField(max_length=200)
     github_url = models.URLField(blank=True)

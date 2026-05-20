@@ -20,7 +20,7 @@ class TestProfileSerializer:
     def test_contains_expected_fields(self):
         profile = ProfileFactory()
         data = ProfileSerializer(profile).data
-        expected = {'id', 'name', 'job_title', 'bio', 'photo', 'phone',
+        expected = {'id', 'name', 'job_title', 'bio', 'photo', 'whatsapp_url',
                     'email', 'location', 'github_url', 'linkedin_url', 'resume_file'}
         assert set(data.keys()) == expected
 

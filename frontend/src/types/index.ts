@@ -6,7 +6,7 @@ export interface Profile {
   job_title: Localized;
   bio: Localized;
   photo: string | null;
-  phone: string;
+  whatsapp_url: string;
   email: string;
   location: string;
   github_url: string;

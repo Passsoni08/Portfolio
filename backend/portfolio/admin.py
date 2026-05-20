@@ -32,7 +32,7 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ['name', 'job_title', 'email', 'location']
     fieldsets = [
         (None, {'fields': ['name', 'job_title', 'bio', 'photo']}),
-        ('Contact', {'fields': ['email', 'phone', 'location']}),
+        ('Contact', {'fields': ['email', 'whatsapp_url', 'location']}),
         ('Links', {'fields': ['github_url', 'linkedin_url', 'resume_file']}),
     ]
 

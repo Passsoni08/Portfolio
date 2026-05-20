@@ -20,7 +20,7 @@ class ProfileFactory(factory.django.DjangoModelFactory):
     name = factory.Faker('name')
     job_title = 'Software Developer'
     bio = factory.Faker('paragraph')
-    phone = '+55 (16) 99999-9999'
+    whatsapp_url = 'https://wa.me/5500000000000'
     email = factory.Faker('email')
     location = 'São Paulo, Brasil'
     github_url = 'https://github.com/testuser'

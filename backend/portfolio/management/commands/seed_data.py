@@ -41,7 +41,7 @@ class Command(BaseCommand):
                 'name': data['name'],
                 'job_title': data['job'],
                 'bio': data.get('bio', {}),
-                'phone': data.get('phone', ''),
+                'whatsapp_url': data.get('whatsapp_url', ''),
                 'location': data.get('location', ''),
                 'github_url': data.get('github_url', ''),
                 'linkedin_url': data.get('linkedin_url', ''),

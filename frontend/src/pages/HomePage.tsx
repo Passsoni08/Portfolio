@@ -91,7 +91,7 @@ export default function HomePage() {
 
         <Contact
           email={data?.profile?.email}
-          phone={data?.profile?.phone}
+          whatsappUrl={data?.profile?.whatsapp_url}
           githubUrl={data?.profile?.github_url}
           linkedinUrl={data?.profile?.linkedin_url}
         />

@@ -46,7 +46,7 @@
     "sending": "Enviando...",
     "success": "Mensagem enviada com sucesso!",
     "error": "Algo deu errado. Tente novamente mais tarde.",
-    "phone": "Telefone",
+    "whatsapp": "WhatsApp",
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
