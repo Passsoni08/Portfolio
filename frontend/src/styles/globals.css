@@ -51,9 +51,6 @@
   --color-border: #1a2a3a;
   --color-border-hover: #243a4f;
   --color-error: #ff4444;
-  --color-mesh-1: #0d1b2a;
-  --color-mesh-2: #0a2a2a;
-  --color-mesh-3: #0a1a10;
 }
 
 [data-theme="light"] {
@@ -71,9 +68,6 @@
   --color-border: #e0e0e0;
   --color-border-hover: #cccccc;
   --color-error: #cc3333;
-  --color-mesh-1: #e8e8e0;
-  --color-mesh-2: #e0ece0;
-  --color-mesh-3: #e0e8e8;
 }
 
 *,
@@ -261,93 +255,3 @@ textarea:focus-visible {
   }
 }
 
-/* Animated mesh gradient background */
-.mesh-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.mesh-bg::before,
-.mesh-bg::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-}
-
-.mesh-bg::before {
-  width: 600px;
-  height: 600px;
-  top: -10%;
-  left: -5%;
-  background: radial-gradient(circle, var(--color-mesh-1) 0%, transparent 70%);
-  filter: blur(80px);
-  opacity: 0.7;
-  animation: meshFloat1 20s ease-in-out infinite;
-}
-
-.mesh-bg::after {
-  width: 500px;
-  height: 500px;
-  bottom: -10%;
-  right: -5%;
-  background: radial-gradient(circle, var(--color-mesh-2) 0%, transparent 70%);
-  filter: blur(100px);
-  opacity: 0.5;
-  animation: meshFloat2 25s ease-in-out infinite;
-}
-
-.mesh-bg__blob {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  top: 40%;
-  left: 50%;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--color-mesh-3) 0%, transparent 70%);
-  filter: blur(90px);
-  opacity: 0.4;
-  animation: meshFloat3 30s ease-in-out infinite;
-}
-
-@keyframes meshFloat1 {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(80px, 60px); }
-  50% { transform: translate(40px, 120px); }
-  75% { transform: translate(-40px, 80px); }
-}
-
-@keyframes meshFloat2 {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(-60px, -40px); }
-  50% { transform: translate(-100px, -80px); }
-  75% { transform: translate(-30px, -120px); }
-}
-
-@keyframes meshFloat3 {
-  0%, 100% { transform: translate(-50%, 0); }
-  33% { transform: translate(-60%, 60px); }
-  66% { transform: translate(-40%, -40px); }
-}
-
-@media (max-width: 768px) {
-  .mesh-bg::before {
-    width: 300px;
-    height: 300px;
-    filter: blur(60px);
-  }
-
-  .mesh-bg::after {
-    width: 250px;
-    height: 250px;
-    filter: blur(80px);
-  }
-
-  .mesh-bg__blob {
-    width: 200px;
-    height: 200px;
-    filter: blur(70px);
-  }
-}

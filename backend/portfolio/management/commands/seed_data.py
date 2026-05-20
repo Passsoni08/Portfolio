@@ -59,7 +59,7 @@ class Command(BaseCommand):
         hard_categories = [
             ({'en': 'Backend', 'pt-BR': 'Backend'}, 'backend', 0),
             ({'en': 'Frontend', 'pt-BR': 'Frontend'}, 'frontend', 1),
-            ({'en': 'Workspace', 'pt-BR': 'Ambiente'}, 'workspace', 2),
+            ({'en': 'Infrastructure', 'pt-BR': 'Infraestrutura'}, 'infrastructure', 2),
             ({'en': 'AI Tools', 'pt-BR': 'Ferramentas IA'}, 'aiTools', 3),
         ]
 

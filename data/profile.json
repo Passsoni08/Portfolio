@@ -5,8 +5,8 @@
     "pt-BR": "Desenvolvedor de Software"
   },
   "bio": {
-    "en": "Software developer based in Brazil, building polished fullstack applications with React, Next.js, and Django, with a strong focus on clean architecture and animated, accessible interfaces.",
-    "pt-BR": "Desenvolvedor de software no Brasil, construindo aplicações fullstack polidas com React, Next.js e Django, com foco em arquitetura limpa e interfaces animadas e acessíveis."
+    "en": "Software developer based in Brazil, building polished fullstack applications with React, Next.js, and Django, with a strong focus on clean architecture and animated, accessible interfaces.\n\nBeyond technology, I bring over a decade of experience in high-level sports (basketball), having developed discipline, resilience, leadership, and a competitive mindset — competencies that I directly apply to my professional performance.",
+    "pt-BR": "Desenvolvedor de software no Brasil, construindo aplicações fullstack polidas com React, Next.js e Django, com foco em arquitetura limpa e interfaces animadas e acessíveis.\n\nAlém da tecnologia, trago mais de uma década de experiência no esporte de alto nível (basquete), tendo desenvolvido disciplina, resiliência, liderança e mentalidade competitiva — competências que aplico diretamente ao meu desempenho profissional."
   },
   "phone": "+55 (16) 99282-6962",
   "email": "passonirafael08@gmail.com",
@@ -18,8 +18,7 @@
       { "name": "Node.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", "proficiency": 100 },
       { "name": "JavaScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", "proficiency": 100 },
       { "name": "Django", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg", "proficiency": 100 },
-      { "name": "DRF", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/djangorest/djangorest-original.svg", "proficiency": 100 },
-      { "name": "Docker", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", "proficiency": 100 }
+      { "name": "FastAPI", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg", "proficiency": 100 }
     ],
     "frontend": [
       { "name": "TypeScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", "proficiency": 100 },
@@ -29,11 +28,14 @@
       { "name": "shadcn/ui", "icon": "/icons/shadcn.svg", "proficiency": 100 }
     ],
     "aiTools": [
-      { "name": "Claude Code", "icon": "/icons/claude.svg", "proficiency": 100 },
-      { "name": "Codex", "icon": "/icons/openai.svg", "proficiency": 100 }
+      { "name": "Claude Code", "icon": "/icons/anthropic.svg", "proficiency": 100 },
+      { "name": "Codex", "icon": "/icons/openai.svg", "proficiency": 100 },
+      { "name": "Gemini", "icon": "/icons/gemini.svg", "proficiency": 100 }
     ],
-    "workspace": [
-      { "name": "VS Code", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg", "proficiency": 100 }
+    "infrastructure": [
+      { "name": "Docker", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", "proficiency": 100 },
+      { "name": "Nginx", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg", "proficiency": 100 },
+      { "name": "GitHub Actions", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg", "proficiency": 100 }
     ],
     "softSkills": [
       { "en": "Teamwork", "pt-BR": "Trabalho em Equipe" },

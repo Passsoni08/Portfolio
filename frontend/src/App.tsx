@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import SmoothScroll from './components/layout/SmoothScroll'
+import PageBackground from './components/layout/PageBackground'
 import HomePage from './pages/HomePage'
 
 const DocsPage = lazy(() => import('./pages/DocsPage'))
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <SmoothScroll>
+      <PageBackground />
       <div key={location.pathname} className="page-transition">
         <Suspense fallback={
           <div style={{

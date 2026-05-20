@@ -52,6 +52,7 @@ export default function Hero({ name = 'Rafael Passoni', jobTitle = 'Software Dev
     <section className="hero">
       <div className="hero__grid-bg" aria-hidden="true" />
       <div className="hero__glow" aria-hidden="true" />
+      <div className="hero__glow hero__glow--secondary" aria-hidden="true" />
 
       <div className="hero__content">
         {visible && (

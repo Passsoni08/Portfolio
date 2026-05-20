@@ -46,6 +46,7 @@
   font-size: var(--text-body);
   line-height: 1.8;
   margin-bottom: 2.5rem;
+  white-space: pre-line;
 }
 
 .about__stats {
