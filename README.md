@@ -1,5 +1,9 @@
 # Portfolio - Rafael V Passoni
 
+[![Backend CI](https://github.com/Passsoni08/Portfolio/actions/workflows/backend-ci.yml/badge.svg)](https://github.com/Passsoni08/Portfolio/actions/workflows/backend-ci.yml)
+[![Frontend CI](https://github.com/Passsoni08/Portfolio/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/Passsoni08/Portfolio/actions/workflows/frontend-ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Full-stack portfolio website built with Django REST Framework and React.
 
 ## Tech Stack
@@ -106,3 +110,7 @@ GitHub Actions runs on push/PR to `main` and `develop`:
 
 - **Backend:** pytest with 80% coverage threshold
 - **Frontend:** TypeScript type check, Vitest, production build
+
+## License
+
+MIT — see [LICENSE](LICENSE).
