@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import ProjectCard from '../../components/projects/ProjectCard'
 import type { Project } from '../../types'
+import { renderWithProviders } from '../test-utils'
 
 const mockProject: Project = {
   id: 1,
@@ -23,28 +24,28 @@ const mockProject: Project = {
 
 describe('ProjectCard', () => {
   it('renders project title', () => {
-    render(<ProjectCard project={mockProject} />)
+    renderWithProviders(<ProjectCard project={mockProject} />)
     expect(screen.getByText('Test Project')).toBeInTheDocument()
   })
 
   it('renders short description', () => {
-    render(<ProjectCard project={mockProject} />)
+    renderWithProviders(<ProjectCard project={mockProject} />)
     expect(screen.getByText('Short desc')).toBeInTheDocument()
   })
 
   it('renders github link', () => {
-    render(<ProjectCard project={mockProject} />)
+    renderWithProviders(<ProjectCard project={mockProject} />)
     const link = screen.getByRole('link')
-    expect(link).toHaveAttribute('href', 'https://github.com/test/project')
+    expect(link).toHaveAttribute('href', '/projects/test-project')
   })
 
   it('renders technology tags', () => {
-    render(<ProjectCard project={mockProject} />)
+    renderWithProviders(<ProjectCard project={mockProject} />)
     expect(screen.getByText('React')).toBeInTheDocument()
   })
 
   it('renders first letter as placeholder when no thumbnail', () => {
-    render(<ProjectCard project={mockProject} />)
+    renderWithProviders(<ProjectCard project={mockProject} />)
     expect(screen.getByText('T')).toBeInTheDocument()
   })
 
@@ -54,7 +55,7 @@ describe('ProjectCard', () => {
       thumbnail: null,
       thumbnail_url: 'https://example.com/image.png',
     }
-    render(<ProjectCard project={project} />)
+    renderWithProviders(<ProjectCard project={project} />)
     const img = screen.getByRole('img')
     expect(img).toHaveAttribute('src', 'https://example.com/image.png')
   })
