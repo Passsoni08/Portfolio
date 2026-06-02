@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { localize } from '../../lib/localize';
 import type { Project } from '../../types';
 
 interface ProjectCardProps {
   project: Project;
+  onSelect: (project: Project) => void;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
   const title = localize(project.title, lang);
@@ -15,9 +15,19 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   const image = project.thumbnail || project.thumbnail_url;
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onSelect(project);
+    }
+  };
+
   return (
-    <Link
-      to={`/projects/${project.slug}`}
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => onSelect(project)}
+      onKeyDown={handleKeyDown}
       className={`project-card ${project.featured ? 'project-card--featured' : ''}`}
     >
       <div className="project-card__bg">
@@ -49,6 +59,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

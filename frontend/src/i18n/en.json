@@ -55,7 +55,8 @@
     "notFound": "Project not found.",
     "back": "Back to Portfolio",
     "viewGithub": "View on GitHub",
-    "liveDemo": "Live Demo"
+    "liveDemo": "Live Demo",
+    "close": "Close"
   },
   "footer": {
     "builtWith": "Built with Django & React"

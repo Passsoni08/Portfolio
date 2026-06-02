@@ -1,0 +1,210 @@
+/* Backdrop behind drawer */
+.project-drawer__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-modal) - 1);
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-out-expo);
+}
+
+.project-drawer__backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Side drawer */
+.project-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(92vw, 480px);
+  z-index: var(--z-modal);
+  background-color: var(--color-bg-elevated);
+  border-left: 1px solid var(--color-border);
+  padding: 2rem;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform var(--duration-medium) var(--ease-out-expo);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3);
+}
+
+.project-drawer--open {
+  transform: translateX(0);
+}
+
+.project-drawer__close {
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1;
+  transition: color var(--duration-fast), border-color var(--duration-fast);
+}
+
+.project-drawer__close:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.project-drawer__content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero thumbnail */
+.project-drawer__hero {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+}
+
+.project-drawer__thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.project-drawer__thumbnail-fallback {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-bg-elevated) 0%, var(--color-bg-card) 100%);
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 700;
+  color: var(--color-border);
+  user-select: none;
+}
+
+/* Title */
+.project-drawer__title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+/* Tech badges */
+.project-drawer__techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.project-drawer__tech {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  transition: border-color var(--duration-fast);
+}
+
+.project-drawer__tech:hover {
+  border-color: var(--color-accent);
+}
+
+.project-drawer__tech-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Description */
+.project-drawer__description {
+  margin-bottom: 2.5rem;
+}
+
+.project-drawer__description p {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.project-drawer__description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Action buttons */
+.project-drawer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project-drawer__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-weight: 500;
+  transition: background-color var(--duration-fast), color var(--duration-fast), border-color var(--duration-fast);
+}
+
+.project-drawer__btn--primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.project-drawer__btn--primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.project-drawer__btn--secondary {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  background: transparent;
+}
+
+.project-drawer__btn--secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+@media (max-width: 480px) {
+  .project-drawer__actions {
+    flex-direction: column;
+  }
+
+  .project-drawer__btn {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-drawer {
+    transition: none;
+  }
+
+  .project-drawer__backdrop {
+    transition: none;
+  }
+}
