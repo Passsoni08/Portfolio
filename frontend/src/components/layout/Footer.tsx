@@ -23,7 +23,7 @@ export default function Footer({ githubUrl, linkedinUrl, email }: FooterProps) {
           {githubUrl && (
             <MagneticButton
               className="footer__link"
-              onClick={() => window.open(githubUrl, '_blank')}
+              onClick={() => window.open(githubUrl, '_blank', 'noopener,noreferrer')}
               aria-label="GitHub"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -34,7 +34,7 @@ export default function Footer({ githubUrl, linkedinUrl, email }: FooterProps) {
           {linkedinUrl && (
             <MagneticButton
               className="footer__link"
-              onClick={() => window.open(linkedinUrl, '_blank')}
+              onClick={() => window.open(linkedinUrl, '_blank', 'noopener,noreferrer')}
               aria-label="LinkedIn"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

@@ -70,12 +70,12 @@ export default function Contact({ email, whatsappUrl, githubUrl, linkedinUrl }: 
                 </MagneticButton>
               )}
               {githubUrl && (
-                <MagneticButton className="contact__link-btn" onClick={() => window.open(githubUrl, '_blank')}>
+                <MagneticButton className="contact__link-btn" onClick={() => window.open(githubUrl, '_blank', 'noopener,noreferrer')}>
                   {t('contact.github')}
                 </MagneticButton>
               )}
               {linkedinUrl && (
-                <MagneticButton className="contact__link-btn" onClick={() => window.open(linkedinUrl, '_blank')}>
+                <MagneticButton className="contact__link-btn" onClick={() => window.open(linkedinUrl, '_blank', 'noopener,noreferrer')}>
                   {t('contact.linkedin')}
                 </MagneticButton>
               )}
