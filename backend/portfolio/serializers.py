@@ -31,31 +31,44 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = [
+            'id', 'title', 'slug', 'description', 'short_description',
+            'thumbnail', 'thumbnail_url', 'live_url', 'github_url',
+            'technologies', 'featured', 'order', 'created_at',
+        ]
 
 
 class ExperienceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
-        fields = '__all__'
+        fields = [
+            'id', 'title', 'company', 'location', 'description',
+            'start_date', 'end_date', 'order',
+        ]
 
 
 class EducationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Education
-        fields = '__all__'
+        fields = [
+            'id', 'institution', 'degree', 'field_of_study',
+            'start_date', 'end_date', 'description', 'order',
+        ]
 
 
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Language
-        fields = '__all__'
+        fields = ['id', 'name', 'level', 'order']
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = [
+            'id', 'name', 'job_title', 'bio', 'photo', 'whatsapp_url',
+            'email', 'location', 'github_url', 'linkedin_url', 'resume_file',
+        ]
 
 
 class ContactMessageSerializer(serializers.ModelSerializer):
